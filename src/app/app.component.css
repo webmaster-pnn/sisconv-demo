@@ -1,0 +1,26 @@
+#content{
+    height: 100%;
+    margin-bottom: -70px;
+}
+footer{
+    background-color: #1E124D;
+    width: 100%;
+    height: 70px;
+    
+}
+#secundario{
+    width: 100%;
+    height: 15px;
+    background-color: #2F2559;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#marinha-logo{
+    width: 53px;
+    position: relative;
+    bottom: 37px;
+}
+#marinha-logo img{
+    width: 100%;
+}
