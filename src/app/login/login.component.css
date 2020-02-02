@@ -1,0 +1,59 @@
+
+
+@media screen and (max-width: 2000px){
+.login{
+    width: 1949px;
+    height: 894px;
+    background: url(../../assets/image/pnn.png);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.box-login{
+    width: 790px;
+    height: 451px;
+    background-color: rgba(31, 43, 119, 0.73);
+    position: relative;
+    top: 100px;
+}
+}
+
+@media screen and (max-width: 1400px){
+    .login{
+        width: 1364px;
+        height: 660px;
+        background-repeat: no-repeat;
+        background-position: -2px -27px;
+        background-size: 1370px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+
+    }
+    
+    .box-login{
+        width: 747px;
+        height: 400px;
+        background-color: rgba(31, 43, 119, 0.73);
+        position: relative;
+        top: 79px;
+        overflow: hidden;
+    }
+    #texto-informativo {
+        text-align: left;
+        margin-top: 30px;
+    }
+    #texto-informativo span{
+        font-size: 15px;
+        color: white;
+    }
+    #logo{
+        position: relative;
+        top: 17px;
+    }
+    #logo img{
+        max-width: 100%;
+    }
+}
