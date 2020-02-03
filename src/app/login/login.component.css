@@ -1,18 +1,62 @@
 
-
-@media screen and (max-width: 2000px){
 .login{
     max-width: 100%;
     height: 100%;
     background: url(../../assets/image/pnn.png) no-repeat;
-    background-position: -13px -133px;
-    background-size: 108%;
+    background-size: auto;
     display: flex;
-    
     flex-direction: column;
-  
     align-items: center;
+    background-position: -8px -27px;
     line-height: 1.3!important;
+}
+.box-login{
+    width: 747px;
+    height: 400px;
+    background-color: rgba(31, 43, 119, 0.73);
+    position: relative;
+    top: 79px;
+    overflow: hidden;
+}
+
+#texto-informativo {
+    text-align: left;
+    margin-top: 30px;
+}
+#texto-informativo span{
+    font-size: 15px;
+    color: white;
+}
+#logo{
+    position: relative;
+    top: 17px;
+}
+#logo img{
+    max-width: 100%;
+}
+#form-login{
+    padding-top: 20px;
+       
+}
+#form-login button{
+    margin-left: 16px;
+}
+
+.form-group{
+    width: 310px;
+    
+}
+#alinhamento{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+/* @media screen and (max-width: 1700px){
+.login{
+  
+    background-position: -13px -133px;
+    
+    
 }
 .box-login{
     width: 790px;
@@ -21,68 +65,23 @@
     position: relative;
     top: 100px;
 }
-}
+} */
 
-@media screen and (max-width: 1400px){
-    .login{
-        width: 1364px;
-        height: 595px;
-        background-repeat: no-repeat;
-        background-position: -2px -27px;
-        background-size: 1370px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        overflow: hidden;
-        line-height: 1.3!important;
-
-    }
+@media screen and (min-width: 1050px){
+    
     #content{
         height: 100%;
         margin-bottom: -50px;
     }
     
-    .box-login{
-        width: 747px;
-        height: 400px;
-        background-color: rgba(31, 43, 119, 0.73);
-        position: relative;
-        top: 79px;
-        overflow: hidden;
-    }
-    #texto-informativo {
-        text-align: left;
-        margin-top: 30px;
-    }
-    #texto-informativo span{
-        font-size: 15px;
-        color: white;
-    }
-    #logo{
-        position: relative;
-        top: 17px;
-    }
-    #logo img{
-        max-width: 100%;
-    }
-    #form-login{
-        padding-top: 20px;
-           
-    }
-    #form-login button{
-        margin-left: 16px;
-    }
 
-    .form-group{
-        width: 310px;
-        
-    }
-    #alinhamento{
-        display: flex;
-        flex-direction: column;
-        align-items: center; 
-    }
 
 
    
     }
+    /* @media screen and (max-width: 1049px) and (min-width: 1024px){
+        .login{
+            background-size: 142%;
+            background-position: -172px -2px;
+        }
+    } */

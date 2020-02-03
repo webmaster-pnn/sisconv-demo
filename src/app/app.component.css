@@ -24,3 +24,10 @@ footer{
 #marinha-logo img{
     width: 100%;
 }
+/* @media screen and (max-width: 1049px) and (min-width: 1024px){
+    footer{
+        
+        height: 105px;
+        
+    }
+} */

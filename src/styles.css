@@ -2,3 +2,9 @@ html, body{
     height: 100%;
     margin:0px;
 }
+/* @media screen and (max-width: 1024px){
+    html, body{
+        height: 98%;
+        
+    }
+} */
