@@ -20,19 +20,28 @@
                    <img src="./assets/image/SisConv.png" >
                </figure>
                
-               <form id="form-login" #f="ngForm" (ngSubmit)="onSubmit(f)">
+               <form id="form-login" #f="ngForm" (ngSubmit)="onSubmit(f)" >
                    <div id="alinhamento">
                         <div class="form-group">
                     
-                            <input type="text" class="form-control" id="nip" name="nip" aria-describedby="emailHelp" placeholder="Seu Nip" [(ngModel)]="usuario.nip">
+                            <input type="text" class="form-control" [ngClass]="{'is-invalid': nip.invalid && nip.touched}" id="nip" name="nip" 
+                            aria-describedby="emailHelp" placeholder="Seu NIP" [(ngModel)]="usuario.nip" required #nip="ngModel">
+                            <div class="invalid-feedback">
+                                Por favor, digite seu NIP.
+                              </div>
                         </div>
                         <div class="form-group">
-                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" [(ngModel)]="usuario.senha">
+                        <input type="password" class="form-control" [ngClass]="{'is-invalid': senha.invalid && senha.touched}"
+                         id="senha" name="senha" placeholder="Senha" [(ngModel)]="usuario.senha" required #senha="ngModel">
+                         <div class="invalid-feedback">
+                            Por favor, digite sua senha.
+                          </div>
                         </div>
+                        
                    </div>
                
                
-                <button   type="submit" class="btn btn-primary">Entrar</button>
+                <button   type="submit" class="btn btn-primary" [disabled]="f.invalid">Entrar</button>
               </form>
               </div>
               
