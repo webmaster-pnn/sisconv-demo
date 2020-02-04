@@ -22,8 +22,12 @@
                
                <form id="form-login" #f="ngForm" (ngSubmit)="onSubmit(f)" >
                    <div id="alinhamento">
+
+                          
                         <div class="form-group">
-                    
+
+
+
                             <input type="text" class="form-control" [ngClass]="{'is-invalid': nip.invalid && nip.touched}" id="nip" name="nip" 
                             aria-describedby="emailHelp" placeholder="Seu NIP" [(ngModel)]="usuario.nip" required #nip="ngModel">
                             <div class="invalid-feedback">
@@ -36,6 +40,7 @@
                          <div class="invalid-feedback">
                             Por favor, digite sua senha.
                           </div>
+                         
                         </div>
                         
                    </div>
