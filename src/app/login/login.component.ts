@@ -1,5 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from './auth.service';
+import { Usuario } from '../model/usuario';
 
 
 @Component({
@@ -8,22 +10,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  usuario: any = {
-    nip: null,
-    senha: null
-  }
-  pageError: Boolean = false;
+  usuario: Usuario = new Usuario();
   
-  onSubmit(form){
-    if(this.usuario.nip == 16115597 && this.usuario.senha == 16115597){
-      this.router.navigate(['/home']);
-    } else{
-      this.pageError = true;
-
-    }
+  
+  fazerLogin(){
+    this.auth.login(this.usuario);
   }
 
-  constructor(private router:Router) { 
+  constructor(private router:Router, private auth: AuthService) { 
   }
 
   ngOnInit() {
