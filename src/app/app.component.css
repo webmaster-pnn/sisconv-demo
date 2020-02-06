@@ -24,10 +24,22 @@ footer{
 #marinha-logo img{
     width: 100%;
 }
-/* @media screen and (max-width: 1049px) and (min-width: 1024px){
-    footer{
-        
-        height: 105px;
-        
-    }
-} */
+
+#navbar {
+    padding-left: 80px;
+    padding-right: 80px;
+    background-color: #212F6F!important;
+}
+
+#conteudoNavbarSuportado{
+    padding-left: 80px;
+}
+#navbar-ul li a{
+    color: white
+}
+#nav-configuracao ul li a{
+    color: white;
+}
+.dropdown-menu a{
+    color: black!important;
+}
