@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.usuario);
   }
 
+
   constructor(private router:Router, private auth: AuthService) { 
   }
 

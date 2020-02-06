@@ -8,15 +8,18 @@ import { AuthService } from './login/auth.service';
 })
 export class AppComponent {
   title = 'SisConV';
-  mostrar: boolean = false;
+  autenticacao: boolean = false;
 
+  logout(){
+    this.autenticacao = false;
+  }
   
   constructor(private logar: AuthService){
     
   }
   ngOnInit(){
-    this.logar.mostrarMenu.subscribe(
-      mostrar => this.mostrar = mostrar
+    this.logar.autenticar.subscribe(
+      autenticando => this.autenticacao = autenticando
     );
     
   }

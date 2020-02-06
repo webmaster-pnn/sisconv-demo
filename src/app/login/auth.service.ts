@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  autenticado: boolean = false;
+ 
   usuario: Usuario = new Usuario();
  
   
-  mostrarMenu =new EventEmitter<boolean>();
+  autenticar =new EventEmitter<boolean>();
   constructor(private router: Router) { 
     
    }
@@ -21,10 +21,10 @@ export class AuthService {
   
     if(usuario.nip == '16115597' && usuario.senha == '16115597'){
       this.router.navigate(['/home']);
-      this.mostrarMenu.emit(true);
+      this.autenticar.emit(true);
     } else{
-      this.autenticado = true;
-      this.mostrarMenu.emit(false);
+      
+      this.autenticar.emit(false);
 
     }
     
