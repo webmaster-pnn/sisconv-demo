@@ -1,0 +1,18 @@
+.espaco-lateral{
+    padding-left: 15px; 
+    padding-right: 15px; 
+}
+.espaco-acima{
+    padding-top: 30px;
+}
+.alinhamento .card .card-body{
+    text-align: center;
+    color: #212F6F!important;
+   
+}
+.card{
+    border: 0px!important;
+}
+.card-header{
+    background-color: #ebeef0;
+}
