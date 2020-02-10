@@ -16,3 +16,7 @@
 .card-header{
     background-color: #ebeef0;
 }
+.tab-content{
+    background-color: #fff;
+    min-height: 300px;
+}

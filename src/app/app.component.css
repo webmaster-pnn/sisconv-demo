@@ -45,6 +45,7 @@ footer{
 }
 #nav-configuracao ul li a{
     color: #cbbde2;
+    cursor: pointer;
 }
 
 #nav-configuracao ul li a:hover{
