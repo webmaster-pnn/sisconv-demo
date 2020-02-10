@@ -1,50 +1,50 @@
   
-  <!-- *ngIf="autenticacao" -->
-  <nav class="navbar navbar-expand-lg navbar-light  bg-dark"  id="navbar">
+  <!--*ngIf="autenticacao" -->
+  <nav class="navbar navbar-expand-lg navbar-light  bg-dark"  id="navbar"  >
     
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
    </button>
-   <a id="logo" routerLink="/home"><figure><img src="./../assets/image/SisConV_2.png" alt=""></figure></a>
+   <svg-icon src="./assets/image/ICON.svg" [svgStyle]="{ 'width.px':110 }"></svg-icon>
    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
       
      <ul class="navbar-nav mr-auto" id="navbar-ul">
         
-       <li class="nav-item active" routerLinkActive="active">
-         <a class="nav-link"  routerLink="/home">Pagina Inicial <span class="sr-only">(página atual)</span></a>
+       <li class="nav-item ">
+         <a class="nav-link"  routerLink="/home"  routerLinkActive="active">Pagina Inicial <span class="sr-only">(página atual)</span></a>
        </li>
-       <li class="nav-item" routerLinkActive="active">
-         <a class="nav-link" routerLink="/login"   (click)="logout()">Logout</a>
+       <li class="nav-item" >
+         <a class="nav-link" routerLink="/login" routerLinkActive="active"   (click)="logout()">Logout</a>
        </li>
        <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Veiculos
          </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="#">Pesquisar veiculo</a>
-           <a class="dropdown-item" href="#">Cadastrar veiculo</a>
+           <a class="dropdown-item" routerLink="/veiculos/pesquisa" routerLinkActive="active" >Pesquisar veiculo</a>
+           <a class="dropdown-item" routerLink="/veiculos/adicionar" routerLinkActive="active" >Cadastrar veiculo</a>
            <div class="dropdown-divider"></div>
-           <a class="dropdown-item" href="#">Excluir veiculo</a>
+           <a class="dropdown-item" routerLink="/veiculos/excluir" routerLinkActive="active" >Excluir veiculo</a>
          </div>
        </li>
        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Cartões
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Pesquisar cartao</a>
+          <a class="dropdown-item" routerLink="/cartao/pesquisar" routerLinkActive="active" >Pesquisar cartao</a>
 
         </div>
       </li>
        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Proprietários
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Pesquisar proprietário</a>
-          <a class="dropdown-item" href="#">Cadastrar proprietário</a>
+          <a class="dropdown-item" routerLink="/proprietario/pesquisar" routerLinkActive="active" >Pesquisar proprietário</a>
+          <a class="dropdown-item" routerLink="/proprietario/adicionar" routerLinkActive="active" >Cadastrar proprietário</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Excluir proprietário</a>
+          <a class="dropdown-item" routerLink="/proprietario/excluir" routerLinkActive="active" >Excluir proprietário</a>
         </div>
       </li>
      </ul>
@@ -57,9 +57,9 @@
              Configuração
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#"></a>
+              <a class="dropdown-item"routerLink="/usuarios" routerLinkActive="active" >Usuários</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">sobre</a>
+              <a class="dropdown-item" routerLink="/sobre" routerLinkActive="active" >sobre</a>
     
             </div>
           </li>

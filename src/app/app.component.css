@@ -26,7 +26,7 @@ footer{
 }
 
 #navbar {
-    padding-left: 80px;
+    /* padding-left: 80px; */
     padding-right: 80px;
     background-color: #212F6F!important;
 }
@@ -35,11 +35,27 @@ footer{
     padding-left: 80px;
 }
 #navbar-ul li a{
-    color: white
+    color: #cbbde2;
+}
+#navbar-ul li a:hover{
+    color: #fff;
+}
+.active{
+    color: #fff!important
 }
 #nav-configuracao ul li a{
-    color: white;
+    color: #cbbde2;
+}
+
+#nav-configuracao ul li a:hover{
+    color: #fff;
 }
 .dropdown-menu a{
-    color: black!important;
+    color: rgba(0,0,0,.65)!important;
+   
+}
+.dropdown-menu a:hover{
+  
+    color: rgba(0, 0, 0, 0.99)!important;
+    background: rgba(37, 36, 36, 0.28);
 }
