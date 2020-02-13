@@ -45,15 +45,13 @@
           <a class="dropdown-item" routerLink="/proprietario/excluir" routerLinkActive="active" >Excluir proprietário</a>
         </div>
       </li>
-      <li class="nav-item" >
-        <a class="nav-link" routerLink="/login" routerLinkActive="active"   (click)="logout()">Logout</a>
-      </li>
+
      </ul>
      
    </div>
    <div class="collapse navbar-collapse" id="nav-configuracao">
      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              Configuração
             </a>
@@ -63,7 +61,23 @@
               <a class="dropdown-item" routerLink="/sobre" routerLinkActive="active" >sobre</a>
     
             </div>
+          </li> -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-circle"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <p id="perfil-user">Bem vindo de volta, admin</p>
+              <hr>
+              <a class="dropdown-item"routerLink="/perfil" routerLinkActive="active" >Perfil</a>
+              <a class="dropdown-item"routerLink="/usuarios" routerLinkActive="active" >Usuários</a>
+              <a class="dropdown-item" routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/sobre" routerLinkActive="active" >sobre</a>
+    
+            </div>
           </li>
+
      </ul>
    </div>
  </nav>
@@ -86,3 +100,4 @@
       </div>
       
   </footer>
+ 

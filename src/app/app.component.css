@@ -63,3 +63,15 @@ footer{
     color: rgba(0, 0, 0, 0.99)!important;
     background: rgba(37, 36, 36, 0.28);
 }
+.fa-user-circle{
+    font-size: 21px;
+    color: #c0bdd9;
+}
+.fa-user-circle:hover{
+    color: white;
+}
+#perfil-user{
+    font-style: italic;
+    font-size: 13px;
+    text-align: center;
+}
