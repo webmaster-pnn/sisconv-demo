@@ -1,6 +1,6 @@
   
-  <!-- *ngIf="autenticacao"-->
-  <nav class="navbar navbar-expand-lg navbar-light  bg-dark"  id="navbar"  >
+  <!-- -->
+  <nav class="navbar navbar-expand-lg navbar-light  bg-dark"  id="navbar" *ngIf="autenticacao" >
     
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
@@ -67,13 +67,15 @@
               <i class="fas fa-user-circle"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <p id="perfil-user">Bem vindo de volta, admin</p>
+              <p id="perfil-user">Conectado como <strong>Admin</strong></p>
               <hr>
-              <a class="dropdown-item"routerLink="/perfil" routerLinkActive="active" >Perfil</a>
-              <a class="dropdown-item"routerLink="/usuarios" routerLinkActive="active" >Usuários</a>
-              <a class="dropdown-item" routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
+              <a class="dropdown-item"routerLink="/perfil" routerLinkActive="active" >Seu Perfil</a>
+              <a class="dropdown-item"routerLink="/usuarios" routerLinkActive="active" >Gerenciar Usuários</a>
+              <a class="dropdown-item"routerLink="/relatorio" routerLinkActive="active" >Gerar Relatótios</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" routerLink="/sobre" routerLinkActive="active" >sobre</a>
+              <a class="dropdown-item" routerLink="/ajuda" routerLinkActive="active" >Ajuda</a>
+              <a class="dropdown-item" routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
+
     
             </div>
           </li>
@@ -85,13 +87,13 @@
   
 
 
-   <!-- <router-outlet></router-outlet> -->
-   <app-home></app-home>
+   <router-outlet></router-outlet>
+   <!-- <app-home></app-home> -->
 
 
    
   
-   <footer>
+   <footer [ngClass]="{'footer-login': autenticacao ? false : true}">
 
       <div id="secundario"> 
          <figure id="marinha-logo">
