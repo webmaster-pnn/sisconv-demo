@@ -20,3 +20,27 @@
     background-color: #fff;
     min-height: 300px;
 }
+.nav-button.active{
+    background-color: #212f6f!important ;
+    color: white;
+}
+.nav-button.active:hover{
+    color: white;
+}
+.nav-button{
+    color: #495057;
+}
+.nav-button:hover{
+    color: #212f6f;
+}
+#cartao-tab, #historico-tab{
+    color: #495057; 
+}
+#corpo-tab p{
+    font-style: italic;
+    text-align: center;
+}
+#vazio{
+    text-align: center;
+    padding: 100px;
+}

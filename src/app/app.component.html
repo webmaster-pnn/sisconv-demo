@@ -1,6 +1,6 @@
   
-  <!-- -->
-  <nav class="navbar navbar-expand-lg navbar-light  bg-dark"  id="navbar"  *ngIf="autenticacao">
+  <!-- *ngIf="autenticacao"-->
+  <nav class="navbar navbar-expand-lg navbar-light  bg-dark"  id="navbar"  >
     
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
@@ -13,9 +13,7 @@
        <li class="nav-item ">
          <a class="nav-link"  routerLink="/home"  routerLinkActive="active">Pagina Inicial <span class="sr-only">(página atual)</span></a>
        </li>
-       <li class="nav-item" >
-         <a class="nav-link" routerLink="/login" routerLinkActive="active"   (click)="logout()">Logout</a>
-       </li>
+       
        <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            Veiculos
@@ -47,6 +45,9 @@
           <a class="dropdown-item" routerLink="/proprietario/excluir" routerLinkActive="active" >Excluir proprietário</a>
         </div>
       </li>
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="/login" routerLinkActive="active"   (click)="logout()">Logout</a>
+      </li>
      </ul>
      
    </div>
@@ -70,10 +71,11 @@
   
 
 
-   <router-outlet></router-outlet>
-   <!-- <app-home></app-home> -->
+   <!-- <router-outlet></router-outlet> -->
+   <app-home></app-home>
 
 
+   
   
    <footer>
 
