@@ -9,12 +9,18 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthService } from './login/auth.service';
+import { VeiculosComponent } from './veiculos/veiculos.component';
+import { CartoesComponent } from './cartoes/cartoes.component';
+import { ProprietariosComponent } from './proprietarios/proprietarios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    VeiculosComponent,
+    CartoesComponent,
+    ProprietariosComponent
   ],
   imports: [
     BrowserModule,

@@ -1,12 +1,18 @@
+import { VeiculosComponent } from './veiculos/veiculos.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { ProprietariosComponent } from './proprietarios/proprietarios.component';
+import { CartoesComponent } from './cartoes/cartoes.component';
 
 
 const routes: Routes = [
   {path: '', pathMatch:'full', redirectTo: '/login' },
   {path: 'login', component: LoginComponent},
+  {path: 'veiculos', component: VeiculosComponent},
+  {path: 'proprietarios', component: ProprietariosComponent},
+  {path: 'cartoes', component: CartoesComponent},
   {path: 'home', component: HomeComponent}
   
 ];
