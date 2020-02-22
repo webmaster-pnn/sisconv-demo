@@ -10,9 +10,6 @@ import { CartoesComponent } from './cartoes/cartoes.component';
 const routes: Routes = [
   {path: '', pathMatch:'full', redirectTo: '/login' },
   {path: 'login', component: LoginComponent},
-  {path: 'veiculos', component: VeiculosComponent},
-  {path: 'proprietarios', component: ProprietariosComponent},
-  {path: 'cartoes', component: CartoesComponent},
   {path: 'home', component: HomeComponent}
   
 ];
