@@ -14,7 +14,7 @@ import { ProprietariosModule } from './proprietarios/proprietarios.module';
 import { CartoesModule } from './cartoes/cartoes.module';
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
     LoginComponent,
     HomeComponent

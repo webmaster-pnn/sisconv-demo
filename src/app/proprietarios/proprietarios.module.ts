@@ -2,14 +2,16 @@ import { ProprietariosComponent } from './proprietarios.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ProprietariosRoutingModule } from './proprietarios-routing.module';
 
 
 @NgModule({
   declarations: [
-  ProprietariosComponent    
+    ProprietariosComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProprietariosRoutingModule
   ]
 })
 export class ProprietariosModule { }
