@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { VeiculosRoutingModule } from './veiculos-routing.module';
 import { VeiculosComponent } from './veiculos.component';
-import { VeiculosPesquisarComponent } from './veiculos-pesquisar/veiculos-pesquisar.component';
+import { AddVeiculosComponent } from './add-veiculos/add-veiculos.component';
+import { DelVeiculosComponent } from './del-veiculos/del-veiculos.component';
 
 
 @NgModule({
   declarations: [
     VeiculosComponent,
-    VeiculosPesquisarComponent
+    AddVeiculosComponent,
+    DelVeiculosComponent
   ],
   imports: [
     CommonModule,
