@@ -13,6 +13,7 @@ import { ProprietariosRoutingModule } from './proprietarios-routing.module';
 import { AddProprietariosComponent } from './add-proprietarios/add-proprietarios.component';
 import { DelProprietariosComponent } from './del-proprietarios/del-proprietarios.component';
 import { EditProprietariosComponent } from './edit-proprietarios/edit-proprietarios.component';
+import { VeiculoServicoService } from '../veiculos/veiculo-servico.service';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { EditProprietariosComponent } from './edit-proprietarios/edit-proprietar
   ],
   providers: [
     {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'auto'}},
-    { provide: MatPaginatorIntl, useClass: ProprietariosComponent}
+    { provide: MatPaginatorIntl, useClass: ProprietariosComponent},
+    VeiculoServicoService
   ]
 })
 export class ProprietariosModule {  }

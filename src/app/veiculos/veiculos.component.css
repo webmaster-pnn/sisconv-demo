@@ -1,0 +1,58 @@
+/* container principal */
+.container{
+    min-height: 90vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+/* titulo e botao adicionar */
+.adicionar{
+    color: #333333;
+}
+.adicionar:hover{
+    color: blue;
+    cursor: pointer;
+}
+
+/* breadcrumb */
+.breadcrumb{
+    background-color: transparent!important;
+
+}
+.breadcrumb a{
+    color: #212f6f;
+}
+/* Barra de  pesquisa */
+#pesquisa {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.fa-search{
+    padding-right: 10px;
+}
+
+
+/* tabela */
+section{
+    background-color: white;
+}
+table{
+    width: 100%;
+}
+#tab_vazia{
+    padding: 50px;
+
+}
+#tab_vazia h4{
+    text-align: center;    
+}
+#editar_titulo, #editar_conteudo{
+    text-align: center;
+}
+#editar_conteudo a:hover{
+    color: blue;
+    cursor: pointer;
+}
+#editar_conteudo a{
+    color: #333333;
+}

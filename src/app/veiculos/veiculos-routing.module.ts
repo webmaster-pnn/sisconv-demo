@@ -4,10 +4,7 @@ import { VeiculosComponent } from './veiculos.component';
 
 
 const routes: Routes = [
-  {path: 'veiculos', component: VeiculosComponent, children: [
-    {path: 'pesquisar', component: VeiculosComponent }
-
-  ] }
+  {path: 'veiculos', component: VeiculosComponent }
 
 ];
 

@@ -1,3 +1,4 @@
+import { VeiculoServicoService } from './../veiculos/veiculo-servico.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 // componente
 import { Proprietarios } from './../model/proprietarios';
@@ -5,6 +6,7 @@ import { Proprietarios } from './../model/proprietarios';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatPaginator, MatPaginatorIntl} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import { Veiculos } from '../model/veiculos';
 
 @Component({
   selector: 'app-proprietarios',
@@ -12,12 +14,11 @@ import {MatSort} from '@angular/material/sort';
   styleUrls: ['./proprietarios.component.css']
 })
 export class ProprietariosComponent extends MatPaginatorIntl implements OnInit  {
-
+  v: VeiculoServicoService;
   // instancia de proprietario
-  proprietario: Proprietarios[] = [
-    { "id": 1,"grad": "MN", "nome": "Carlos Henrique Pereira Machado Júnior", "nip": "16115597", "setor": "CPD", "cnh":"2251522-55", "editar": ""},
-    { "id": 2,"grad": "CB", "nome": "Carlos Henrique Pereira Machado Júnior", "nip": "16115597", "setor": "CPD", "cnh":"2251522-55", "editar": ""},
-    { "id": 3,"grad": "MN", "nome": "Carlos Henrique Pereira Machado Júnior", "nip": "16115597", "setor": "CPD", "cnh":"2251522-55", "editar": ""}
+  proprietario = [
+    new Proprietarios(1, 'carlos', '16115597','passat', 'vw')
+
   ];
   // variaveis
   tabela_vazia: boolean = false;
@@ -42,9 +43,10 @@ export class ProprietariosComponent extends MatPaginatorIntl implements OnInit  
 
   }
 
-  constructor() { 
+  constructor(veiculo_servico: VeiculoServicoService) { 
     // herdando objetos da classe pai e utilizando para alterar elementos do paginator
     super();
+    this.v = veiculo_servico;
     // paginator tradução
     this.itemsPerPageLabel = 'Itens por pagina';
     this.getRangeLabel = function (page, pageSize, length) {
@@ -58,6 +60,8 @@ export class ProprietariosComponent extends MatPaginatorIntl implements OnInit  
         startIndex + pageSize;
       return startIndex + 1 + ' - ' + endIndex + ' de ' + length;
     };
+    
+    console.log(this.proprietario);
   }
 
   ngOnInit() {
@@ -68,6 +72,7 @@ export class ProprietariosComponent extends MatPaginatorIntl implements OnInit  
     if(this.proprietario.length == 0){
       this.tabela_vazia = true;
     }
+    
 
   }
 
