@@ -17,9 +17,20 @@ export class ProprietariosComponent extends MatPaginatorIntl implements OnInit  
   v: VeiculoServicoService;
   // instancia de proprietario
   proprietario = [
-    new Proprietarios(1, 'carlos', '16115597','passat', 'vw')
+    new Veiculos(1, "passat", "Volkswagen", 1999, "CXZ-2233", "05123468745", "prata", 'carlos', '16115597', 'MN-RM2', 'CPD', '15772354', ''),
+    new Veiculos(2, "uno", "fiat", 2001, "SAD-5554", "21405123601", "cinza", 'joao', '25251222', 'CB-EF', 'SEDIME', '15772354', ''),
+    new Veiculos(3, "mobi", "fiat", 2014, "SDF-4557", "02151301245", "prata", 'kaio', '11010101', '2SG-AR', 'RANCHO', '15772354', ''),
+    new Veiculos(4, "fiesta", "ford", 2020, "ASD-4554", "00215132648", "vermelho", 'jorge', '01010021', 'SO-EF', 'PAIOL', '15772354', ''),
+    new Veiculos(5, "eco sport", "ford", 2014, "SDF-2244", "03214568789", "prata", 'daniel', '02120012', 'CB-PD', 'CPD', '15772354', ''),
+    new Veiculos(6, "cruze", "chevrolet", 2018, "FDS-5747", "03216525894", "preto", 'yasmim', '01210012', 'CB-PD', 'SEDIME', '15772354', ''),
+    new Veiculos(7, "civic", "honda", 2010, "DFR-5478", "02315216235", "prata", 'brenda', '12121124', '3SG-EF', 'SEP', '15772354', ''),
+    new Veiculos(8, "s10", "chevrolet", 2005, "HYG-2578", "02215458756", "preto", 'andre', '16525545', '1T(S)', 'MEDICINA', '15772354', ''),
+    new Veiculos(9, "s10", "chevrolet", 2006, "MJI-0224", "02132525645", "preto", 'patrick', '18545225', 'CB-RM2', 'ODONTOLOGIA', '15772354', ''),
+    new Veiculos(10, "city", "honda", 2008, "GTF-4478", "02312542624", "prata", 'pedro', '05212121', 'CB-OS', 'FISIOTERAPIA', '15772354', ''),
+    new Veiculos(11, "onix", "chevrolet", 2011, "PCX-5525", "00124523125", "preto", 'henrique', '14212215', 'CM(S)', 'GABINETE', '15772354', ''),
+    new Veiculos(12, "c100", "mercedes", 1998, "GTD-5588", "00124251325", "prata", 'arthur', '09252112', 'MN-QPA', 'GABINETE', '15772354', ''),
 
-  ];
+  ]; 
   // variaveis
   tabela_vazia: boolean = false;
 

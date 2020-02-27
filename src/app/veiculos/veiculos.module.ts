@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { VeiculoServicoService } from './veiculo-servico.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,7 @@ import {MatInputModule, MatFormFieldModule, MatTableModule, MatSelectModule, MAT
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     VeiculosRoutingModule,
 
     MatTableModule,

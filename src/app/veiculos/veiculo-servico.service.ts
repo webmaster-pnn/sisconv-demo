@@ -1,19 +1,18 @@
 import { Veiculos } from './../model/veiculos';
 import { Proprietarios } from './../model/proprietarios';
 import { Injectable } from '@angular/core';
+import { Subscriber, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VeiculoServicoService {
- proprietarios: Proprietarios[] = [
-  new Proprietarios(1, 'carlos', '16115597','passat', 'vw')
-
- ];
- public getProprietarios(){
-   return new Proprietarios(1, 'carlos', '16115597','passat', 'vw');
- }
-  constructor() { }
 
 
+
+  constructor(private http: HttpClient) { }
+
+   
+  
 }
