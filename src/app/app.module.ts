@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon'; 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MAT_LABEL_GLOBAL_OPTIONS } from '@angular/material/core';
 
 import { VeiculosModule } from './veiculos/veiculos.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -42,4 +41,6 @@ import { CartoesModule } from './cartoes/cartoes.module';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  teste = 'oi';
+}

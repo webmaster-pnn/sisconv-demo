@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from './login/auth.service';
 
 @Component({
@@ -10,8 +10,7 @@ import { AuthService } from './login/auth.service';
 export class AppComponent {
   title = 'SisConV';
   autenticacao: boolean = false;
-  
-
+ 
   logout(){
     this.autenticacao = false;
   }
@@ -23,6 +22,7 @@ export class AppComponent {
     this.logar.autenticar.subscribe(
       autenticando => this.autenticacao = autenticando
     );
+    
 
     
     
