@@ -6,15 +6,23 @@ footer{
     background-color: #1E124D;
     width: 100%;
     height: 70px;
+    
     /* position: inherit;
     margin-top: 80px;
     bottom: 0px; */
     
 }
-/* .footer-login{
+.login{
+    background: url(./../assets/image/pnn.png) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.footer-login{
     position: absolute;
+    bottom: 0;
+}
 
-} */
+
 #secundario{
     width: 100%;
     height: 15px;
