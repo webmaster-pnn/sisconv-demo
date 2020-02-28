@@ -17,9 +17,10 @@ export class Veiculos {
     public grad: String,
     public setor: String,
     public cnh: String,
+    public cartao: number,
     public editar: String
     ){
-        this.p = new Proprietarios(id, nome, nip, grad, setor, cnh, editar);
+        this.p = new Proprietarios(id, nome, nip, grad, setor, cnh, cartao, editar);
         
     }
 

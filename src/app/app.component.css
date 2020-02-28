@@ -90,3 +90,7 @@ footer{
     font-size: 13px;
     text-align: center;
 }
+.pesAtivo, .remAtivo, .addAtivo{
+    color: #fff!important;
+    
+}

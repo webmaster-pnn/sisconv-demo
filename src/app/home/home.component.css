@@ -44,3 +44,9 @@
     text-align: center;
     padding: 100px;
 }
+
+
+
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    min-height: 81.4%;
+}

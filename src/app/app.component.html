@@ -16,14 +16,15 @@
        </li>
        
        <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" 
+        aria-haspopup="true" aria-expanded="false" [ngClass]="{ 'remAtivo': vr.isActive, 'pesAtivo': vp.isActive, 'addAtivo': va.isActive}"> 
            Veiculos
          </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" routerLink="/veiculos" routerLinkActive="active" >Pesquisar veiculo</a>
-           <a class="dropdown-item" routerLink="/veiculos/adicionar" routerLinkActive="active" >Cadastrar veiculo</a>
+           <a class="dropdown-item" routerLink="/veiculos/pesquisar" routerLinkActive="active" #vp="routerLinkActive" >Pesquisar veiculo</a>
+           <a class="dropdown-item" routerLink="/veiculos/adicionar" routerLinkActive="active" #va="routerLinkActive" >Cadastrar veiculo</a>
            <div class="dropdown-divider"></div>
-           <a class="dropdown-item" routerLink="/veiculos/excluir" routerLinkActive="active" >Excluir veiculo</a>
+           <a class="dropdown-item" routerLink="/veiculos/remover" routerLinkActive="active" #vr="routerLinkActive" >Excluir veiculo</a>
          </div>
        </li>
        <li class="nav-item dropdown">
@@ -36,16 +37,18 @@
         </div>
       </li>
        <li class="nav-item dropdown">
+        
         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" 
-        aria-haspopup="true" aria-expanded="false" routerLinkActive="active"> 
+        aria-haspopup="true" aria-expanded="false" [ngClass]="{ 'remAtivo': r.isActive, 'pesAtivo': p.isActive, 'addAtivo': a.isActive}"> 
+
           Proprietários
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/proprietarios"  >Pesquisar proprietário</a>
-          <a class="dropdown-item" routerLink="/proprietarios/adicionar" >Cadastrar proprietário</a>
+          <a class="dropdown-item" routerLink="/proprietarios/pesquisar" routerLinkActive='active' #p="routerLinkActive" >Pesquisar proprietário</a>
+          <a class="dropdown-item" routerLink="/proprietarios/adicionar" routerLinkActive='active' #a="routerLinkActive">Cadastrar proprietário</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="/proprietarios/excluir" >Excluir proprietário</a>
-        </div>
+          <a class="dropdown-item" routerLink="/proprietarios/remover"  routerLinkActive='active' #r="routerLinkActive" >Excluir proprietário</a>
+        </div> 
       </li>
 
      </ul>

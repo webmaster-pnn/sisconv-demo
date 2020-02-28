@@ -10,6 +10,7 @@ import { DelVeiculosComponent } from './del-veiculos/del-veiculos.component';
 
 // material design
 import {MatInputModule, MatFormFieldModule, MatTableModule, MatSelectModule, MAT_LABEL_GLOBAL_OPTIONS, MatSortModule, MatPaginatorModule, MatPaginatorIntl} from '@angular/material';
+import { EditVeiculosComponent } from './edit-veiculos/edit-veiculos.component';
 
 
 
@@ -17,7 +18,8 @@ import {MatInputModule, MatFormFieldModule, MatTableModule, MatSelectModule, MAT
   declarations: [
     VeiculosComponent,
     AddVeiculosComponent,
-    DelVeiculosComponent
+    DelVeiculosComponent,
+    EditVeiculosComponent
   ],
   imports: [
     CommonModule,

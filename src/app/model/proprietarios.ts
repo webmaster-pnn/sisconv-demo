@@ -9,6 +9,7 @@ export class Proprietarios {
     public grad: String,
     public setor: String,
     public cnh: String,
+    public cartao: number,
     public editar: String
     ){}
 

@@ -18,6 +18,7 @@ export class AppComponent {
   constructor(private logar: AuthService, private router: Router){
     
   }
+
   ngOnInit(){
     this.logar.autenticar.subscribe(
       autenticando => this.autenticacao = autenticando

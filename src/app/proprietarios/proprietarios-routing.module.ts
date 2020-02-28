@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path: 'proprietarios', component: ProprietariosComponent  },
+  {path: 'proprietarios/pesquisar', component: ProprietariosComponent  },
   {path: 'proprietarios/adicionar', component: AddProprietariosComponent},
   { path: 'proprietarios/editar/:id', component: EditProprietariosComponent },
   {path: 'proprietarios/remover', component: DelProprietariosComponent}
