@@ -1,0 +1,39 @@
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    min-height: 81.4%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+/* titulo e botao adicionar */
+.adicionar{
+    color: #333333;
+}
+.adicionar:hover{
+    color: blue;
+    cursor: pointer;
+}
+
+/* breadcrumb */
+.breadcrumb{
+    background-color: transparent!important;
+
+}
+.breadcrumb a{
+    color: #212f6f;
+}
+/* sessao */
+section{
+    padding: 40px;
+    background: white;
+}
+.mat-form-field{
+    margin-left: 8px;
+}
+.mat-form-field button{
+    background: transparent;
+    border: 0;
+    font-size: large;
+
+}
+#nome{
+    width: 400px;
+}

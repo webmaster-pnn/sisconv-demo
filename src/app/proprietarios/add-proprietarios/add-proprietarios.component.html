@@ -1,1 +1,39 @@
-<p>add-proprietarios works!</p>
+
+<div class="container">
+    <h3 >Dados do Proprietário  </h3>
+    <!-- breadcrumb -->
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/home" >Pagina Inicial</a></li>
+          <li class="breadcrumb-item"><a routerLink="/proprietarios/pesquisar" >Proprietários</a></li>
+          <li class="breadcrumb-item active" aria-current="page">adicionar</li>
+          </ol>
+      </nav>
+    <section>
+        <mat-form-field appearance="outline" id="nome">
+            <mat-label>Nome</mat-label>
+            <input matInput type="text" placeholder="Digite seu nome completo.">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" id="nip">
+            <mat-label>Nip</mat-label>
+            <input matInput type="text" placeholder="Digite seu nip"   [formControl]="nip" pattern="[0-9]*" required #nip>
+            <mat-error>{{ getNip() }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        
+         <mat-form-field appearance="outline">
+             <mat-label> Email </mat-label>
+             <input matInput placeholder="joao@exemplo.com" [formControl]="email"  required >
+             <mat-error *ngIf = "email.invalid"> {{ emailErro() }} </mat-error>
+         </mat-form-field>
+    </section>
+  </div>
+

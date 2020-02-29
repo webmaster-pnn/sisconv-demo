@@ -1,10 +1,10 @@
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { FormsModule, NgControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { NgModule, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
 // material imports
-import {MatInputModule, MatFormFieldModule, MatTableModule, MatSelectModule, MAT_LABEL_GLOBAL_OPTIONS, MatSortModule, MatPaginatorModule, MatPaginatorIntl} from '@angular/material';
+import {MatInputModule, MatFormFieldModule, MatTableModule, MatSelectModule, MAT_LABEL_GLOBAL_OPTIONS, MatSortModule, MatPaginatorModule, MatPaginatorIntl, MatIconModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // components imports
@@ -22,15 +22,20 @@ import { VeiculoServicoService } from '../veiculos/veiculo-servico.service';
     AddProprietariosComponent,
     DelProprietariosComponent,
     EditProprietariosComponent
+
+    
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     ProprietariosRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    
 
     MatTableModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatSortModule,
     MatPaginatorModule,
@@ -39,7 +44,9 @@ import { VeiculoServicoService } from '../veiculos/veiculo-servico.service';
   providers: [
     {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'auto'}},
     { provide: MatPaginatorIntl, useClass: ProprietariosComponent},
-    VeiculoServicoService
+  
+    VeiculoServicoService,
+    
   ]
 })
 export class ProprietariosModule {  }
