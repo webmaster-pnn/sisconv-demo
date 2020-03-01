@@ -1,4 +1,8 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './../../login/auth.service';
+import { Setor } from './../../model/setor';
+import { Posto } from './../../model/posto';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -7,9 +11,33 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./add-proprietarios.component.css']
 })
 export class AddProprietariosComponent implements OnInit {
+  autenticacao: boolean = false;
   hide: boolean = true;
   email =  new FormControl('', [Validators.required, Validators.email]);
-  nip = new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]);
+  nip = new FormControl('', [Validators.required]);
+  posto: Posto[] = [
+     { 'posto': 'MN-RC'},
+     { 'posto': 'MN-RM2'},
+     { 'posto': 'MN-QPA'},
+     { 'posto': 'CB-EF'},
+     { 'posto': 'CB-MA'},
+     { 'posto': 'CB-MO'},
+     { 'posto': 'CB-AR'},
+     { 'posto': '3SG-AR'},
+     { 'posto': '3SG-PD'},
+     { 'posto': '3SG-MO'},
+     { 'posto': '2SG-AR'},
+     { 'posto': '2SG-PD'}
+  ];
+  setor: Setor[] = [
+    {'nome': 'CPD'},
+    {'nome': 'SEP'},
+    {'nome': 'GABINETE'},
+    {'nome': 'INTENDENCIA'},
+    {'nome': 'SEDIME'},
+    {'nome': 'PAIOL'},
+    {'nome': 'RANCHO'}
+  ]
 
   emailErro(){
     if(this.email.hasError('required')){
@@ -20,21 +48,18 @@ export class AddProprietariosComponent implements OnInit {
   }
  
   getNip(){
-    
-      if(this.nip.value == "16115597"){
-        console.log("nip OK");
-      }  else if( this.nip.hasError('required')){
-      return this.nip.hasError("required") ? 'Digite o seu nip.' : '';
-
+      if(this.nip.invalid){
+        return 'Nip invalido';
       } else {
-        console.log("nip errado");
-        
+        return this.nip.hasError("required") ? 'Digite o seu nip.' : '';
 
-    }
+      }
+
   }
-  constructor() { } 
+  constructor(private logar: AuthService, private router: Router) { } 
 
   ngOnInit(){
+   
   }
   ngOnChanges(){
     

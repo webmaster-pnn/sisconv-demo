@@ -1,6 +1,7 @@
 import { FormsModule, NgControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 
 // material imports
@@ -14,7 +15,6 @@ import { AddProprietariosComponent } from './add-proprietarios/add-proprietarios
 import { DelProprietariosComponent } from './del-proprietarios/del-proprietarios.component';
 import { EditProprietariosComponent } from './edit-proprietarios/edit-proprietarios.component';
 import { VeiculoServicoService } from '../veiculos/veiculo-servico.service';
-
 
 @NgModule({
   declarations: [
@@ -31,8 +31,8 @@ import { VeiculoServicoService } from '../veiculos/veiculo-servico.service';
     ProprietariosRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
     
-
     MatTableModule,
     MatFormFieldModule,
     MatIconModule,

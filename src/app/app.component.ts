@@ -24,7 +24,8 @@ export class AppComponent {
       autenticando => this.autenticacao = autenticando
     );
     
-
+      this.router.navigate(['/']);
+    
     
     
   }
