@@ -13,8 +13,17 @@ import { FormControl, Validators } from '@angular/forms';
 export class AddProprietariosComponent implements OnInit {
   autenticacao: boolean = false;
   hide: boolean = true;
+
+  teste = [1];
+  length = this.teste.length;
+  num = this.length + 1; 
+  lastValue = this.teste[--this.length];
+
   email =  new FormControl('', [Validators.required, Validators.email]);
   nip = new FormControl('', [Validators.required]);
+  placa = new FormControl('', [Validators.required]);
+  chassi = new FormControl('', [Validators.required]);
+
   posto: Posto[] = [
      { 'posto': 'MN-RC'},
      { 'posto': 'MN-RM2'},
@@ -56,10 +65,18 @@ export class AddProprietariosComponent implements OnInit {
       }
 
   }
+  incrementa(){
+    this.teste.push(++this.lastValue);
+  }
   constructor(private logar: AuthService, private router: Router) { } 
 
   ngOnInit(){
+    
    
+    console.log('modelo' + this.num);
+
+ 
+    
   }
   ngOnChanges(){
     

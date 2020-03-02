@@ -35,5 +35,14 @@ section{
 
 }
 #nome{
-    width: 386px;
+    width: 46vh;
+}
+.alinhar{
+    bottom: 4px;
+}
+.upperCase{
+    text-transform: uppercase;
+}
+.upperCase::placeholder{
+    text-transform: lowercase;
 }
