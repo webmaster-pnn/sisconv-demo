@@ -25,9 +25,7 @@ export class VeiculosService {
 
   listarVeiculos(){
     return this.http.get(this.API)
-      .subscribe( 
-          console.log
-      );
+      .subscribe();
   }
 
   adicionarVeiculos(): Observable<Carro>{
