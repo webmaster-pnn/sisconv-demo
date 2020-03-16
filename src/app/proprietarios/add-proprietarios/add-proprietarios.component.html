@@ -10,103 +10,25 @@
           </ol>
       </nav>
     <section>
-        <mat-form-field appearance="outline" id="nome">
-            <mat-label>Nome</mat-label>
-            <input matInput type="text" placeholder="Digite seu nome completo.">
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" id="nip">
-            <mat-label>Nip</mat-label>
-            <input matInput type="text" placeholder="Digite seu nip"   [formControl]="nip"  mask="00.0000.00"  required >
-            <mat-error>{{ getNip() }}</mat-error>
-        </mat-form-field>
-
-
-
-        <!-- <mat-form-field appearance="outline">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field> -->
-          
-         <mat-form-field appearance="outline">
-             <mat-label> Email </mat-label>
-             <input matInput placeholder="joao@exemplo.com" [formControl]="email"  required >
-             <mat-error *ngIf = "email.invalid"> {{ emailErro() }} </mat-error>
-         </mat-form-field>
-
-         <mat-form-field appearance="outline">
-            <mat-label>CNH</mat-label>
-            <input matInput type="text" placeholder="Digite a CNH"     mask="00000000000"  required >
-        </mat-form-field>
-
-        <mat-form-field appearance="outline"  class="alinhar">
-            <mat-label>Posto/Grad</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let posto of posto" [value]="posto.posto" required>
-                    {{ posto.posto }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline"  class="alinhar">
-            <mat-label>Setor</mat-label>
-            <mat-select>
-                <mat-option matInput *ngFor="let setor of setor" [value]="setor.nome" required>
-                    {{ setor.nome }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" >
-            <mat-label>N° Cartão do estacionamento</mat-label>
-            <input matInput type="text" placeholder="Digite o numero do cartao"    mask="000"  required >
-        </mat-form-field>
-        <br>
-    <h4 >Veiculo  <a  (click) = "incrementa()" class="adicionar"><i class="fas fa-plus-circle"></i></a></h4>
-
-        <div *ngFor="let t of teste">
-            <h5>{{ t }}</h5>
-            <br>
-            <mat-form-field appearance="outline" >
-                <mat-label>Modelo</mat-label>
-                <input matInput type="text" placeholder="Modelo do veiculo"     required >
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="alinhar">
-                <mat-label>Montadora</mat-label>
-                <mat-select>
-                    <mat-option matInput *ngFor="let setor of setor" [value]="setor.nome" required>
-                        {{ setor.nome }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" >
-                <mat-label>Placa</mat-label>
-                <input matInput type="text" placeholder="Placa do veiculo"  [formControl]="placa" class="upperCase"  mask="AAA-0000"  required >
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="alinhar">
-                <mat-label>Cor</mat-label>
-                <mat-select>
-                    <mat-option matInput *ngFor="let setor of setor" [value]="setor.nome" required>
-                        {{ setor.nome }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" >
-                <mat-label>Chassi</mat-label>
-                <input matInput type="text" placeholder="Chassi do veiculo"    [formControl]="chassi" class="upperCase"   required >
-            </mat-form-field>
+        <form [formGroup]="formulario" (ngSubmit) = "onSubmit()">
+            <div>
+                <h4 >Veiculo  <a  (click) = "incrementa()" class="adicionar"><i class="fas fa-plus-circle"></i></a></h4>
+                <div formArrayName="veiculo" *ngFor="let veiculos of formulario.get('veiculo').controls; let i = index">
+                    <br>
+                    <div [formGroupName]="i">
+                    <mat-form-field appearance="outline" >
+                        <mat-label>Modelo</mat-label>
+                        <input matInput placeholder="Modelo do veiculo"  formControlName="modelo" >
+                    </mat-form-field>
+                     </div>
+                    <hr *ngIf="formulario.value.veiculo.length !== 1">
+                </div>
+                <br>
+                <button mat-raised-button color="primary" type="submit">Cadastrar</button>  
+            </div>
             
-            <hr *ngIf="teste.length !== 1">
-        </div>
-
-
+            
+        </form>
     </section>
   </div>
 

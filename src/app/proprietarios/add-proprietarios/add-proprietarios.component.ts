@@ -2,8 +2,9 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../login/auth.service';
 import { Setor } from './../../model/setor';
 import { Posto } from './../../model/posto';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { FormControl, Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Veiculos } from 'src/app/model/veiculos';
 
 @Component({
   selector: 'app-add-proprietarios',
@@ -13,16 +14,15 @@ import { FormControl, Validators } from '@angular/forms';
 export class AddProprietariosComponent implements OnInit {
   autenticacao: boolean = false;
   hide: boolean = true;
-
+  
   teste = [1];
   length = this.teste.length;
   num = this.length + 1; 
   lastValue = this.teste[--this.length];
+  formulario: FormGroup;
+  veiculo: FormArray;
+  veiculos: Veiculos[];
 
-  email =  new FormControl('', [Validators.required, Validators.email]);
-  nip = new FormControl('', [Validators.required]);
-  placa = new FormControl('', [Validators.required]);
-  chassi = new FormControl('', [Validators.required]);
 
   posto: Posto[] = [
      { 'posto': 'MN-RC'},
@@ -47,39 +47,53 @@ export class AddProprietariosComponent implements OnInit {
     {'nome': 'PAIOL'},
     {'nome': 'RANCHO'}
   ]
+  constructor(private logar: AuthService, private router: Router, private formBuilder: FormBuilder) { } 
 
-  emailErro(){
-    if(this.email.hasError('required')){
-      return 'Digite seu email!'
-    } else {
-      return this.email.hasError('email') ? 'Email invalido!' : '';
-    }
-  }
- 
-  getNip(){
-      if(this.nip.invalid){
-        return 'Nip invalido';
-      } else {
-        return this.nip.hasError("required") ? 'Digite o seu nip.' : '';
-
-      }
+  onSubmit(){
+    this.veiculo.controls.map( v => {
+      this.veiculos.push(v.value)
+    });
+    if(this.formulario.valid){
+    console.log('valido');
+  }else{
+    console.log('invalido');
 
   }
-  incrementa(){
-    this.teste.push(++this.lastValue);
+    console.log(this.veiculos);
+
   }
-  constructor(private logar: AuthService, private router: Router) { } 
 
   ngOnInit(){
+
+    this.formulario = this.formBuilder.group({
+      // email:[null, [Validators.required, Validators.email]],
+      // nip:[null, Validators.required ],
+     veiculo: this.formBuilder.array([this.createVeiculo()])
+    });
+  }
+
+  emailErro(){
     
+    if(this.formulario.get('email').hasError('required')){
+      return 'Digite seu email!'
+    } else {
+      return this.formulario.get('email').hasError('email') ? 'Email invalido!' : '';
+    }
+  }
+
+  incrementa(){
    
-    console.log('modelo' + this.num);
+    this.veiculo= this.formulario.get('veiculo') as FormArray;
+    this.veiculo.push(this.createVeiculo());
+    
 
- 
-    
-  }
-  ngOnChanges(){
-    
+
   }
 
+  createVeiculo(): FormGroup{
+    return this.formBuilder.group({
+      modelo:''
+    });
+  }
+  
 }

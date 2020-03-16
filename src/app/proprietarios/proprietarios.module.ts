@@ -5,7 +5,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 
 // material imports
-import {MatInputModule, MatFormFieldModule, MatTableModule, MatSelectModule, MAT_LABEL_GLOBAL_OPTIONS, MatSortModule, MatPaginatorModule, MatPaginatorIntl, MatIconModule} from '@angular/material';
+import {MatInputModule, MatFormFieldModule, MatTableModule, MatSelectModule, MAT_LABEL_GLOBAL_OPTIONS, MatSortModule, MatPaginatorModule, MatPaginatorIntl, MatIconModule, MatButtonModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // components imports
@@ -39,7 +39,8 @@ import { VeiculoServicoService } from '../veiculos/veiculo-servico.service';
     MatInputModule,
     MatSortModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [
     {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'auto'}},

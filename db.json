@@ -1,0 +1,16 @@
+{
+  "veiculos": [
+    {
+      "id": 1,
+      "modelo": "fiesta"
+    },
+    {
+      "id": 2,
+      "modelo": "passat"
+    },
+    {
+      "id": 3,
+      "modelo": "jetta"
+    }
+  ]
+}
