@@ -1,3 +1,4 @@
+import { VeiculosService } from './../../service/veiculos.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../login/auth.service';
 import { Setor } from './../../model/setor';
@@ -47,7 +48,11 @@ export class AddProprietariosComponent implements OnInit {
     {'nome': 'PAIOL'},
     {'nome': 'RANCHO'}
   ]
-  constructor(private logar: AuthService, private router: Router, private formBuilder: FormBuilder) { } 
+  constructor(
+    private formBuilder: FormBuilder,
+    private veiculosService: VeiculosService
+    
+    ) { } 
 
   onSubmit(){
     this.veiculo.controls.map( v => {
@@ -70,6 +75,9 @@ export class AddProprietariosComponent implements OnInit {
       // nip:[null, Validators.required ],
      veiculo: this.formBuilder.array([this.createVeiculo()])
     });
+
+    console.log(this.veiculosService.listarVeiculos());
+    
   }
 
   emailErro(){
@@ -85,7 +93,7 @@ export class AddProprietariosComponent implements OnInit {
    
     this.veiculo= this.formulario.get('veiculo') as FormArray;
     this.veiculo.push(this.createVeiculo());
-    
+    this.veiculosService.adicionarVeiculos().subscribe();
 
 
   }

@@ -15,6 +15,7 @@ import { AddProprietariosComponent } from './add-proprietarios/add-proprietarios
 import { DelProprietariosComponent } from './del-proprietarios/del-proprietarios.component';
 import { EditProprietariosComponent } from './edit-proprietarios/edit-proprietarios.component';
 import { VeiculoServicoService } from '../veiculos/veiculo-servico.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { VeiculoServicoService } from '../veiculos/veiculo-servico.service';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     ProprietariosRoutingModule,
     FormsModule,
