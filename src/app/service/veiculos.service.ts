@@ -3,6 +3,7 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Veiculos } from '../model/veiculos';
 
 
 @Injectable({
@@ -10,22 +11,18 @@ import { Observable } from 'rxjs';
 })
 export class VeiculosService {
 
-  veiculo: Carro =  {
-    'id': null,
-    'modelo': 'fiesta'
-  }
-
-  
-  
-
-
   // variaveis
   private readonly API = `${environment.API}veiculos`;
+  veiculo: Veiculos = new Veiculos();
+
+
+  // construtor
   constructor(private http: HttpClient) { }
 
+  // métodos
+
   listarVeiculos(){
-    return this.http.get(this.API)
-      .subscribe();
+    return this.http.get<Veiculos>(this.API);
   }
 
   adicionarVeiculos(): Observable<Carro>{

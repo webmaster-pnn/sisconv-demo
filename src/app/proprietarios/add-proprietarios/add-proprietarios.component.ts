@@ -13,9 +13,10 @@ import { Veiculos } from 'src/app/model/veiculos';
   styleUrls: ['./add-proprietarios.component.css']
 })
 export class AddProprietariosComponent implements OnInit {
+
+  // variaveis
   autenticacao: boolean = false;
   hide: boolean = true;
-  
   teste = [1];
   length = this.teste.length;
   num = this.length + 1; 
@@ -23,6 +24,8 @@ export class AddProprietariosComponent implements OnInit {
   formulario: FormGroup;
   veiculo: FormArray;
   veiculos: Veiculos[];
+
+  v: Veiculos = new Veiculos();
 
 
   posto: Posto[] = [
@@ -55,16 +58,18 @@ export class AddProprietariosComponent implements OnInit {
     ) { } 
 
   onSubmit(){
-    this.veiculo.controls.map( v => {
-      this.veiculos.push(v.value)
-    });
-    if(this.formulario.valid){
-    console.log('valido');
-  }else{
-    console.log('invalido');
+        this.veiculo.controls
+          .map( v => { this.veiculos
+            .push(v.value)
+        });
 
-  }
-    console.log(this.veiculos);
+        if(this.formulario.valid){
+        console.log('valido');
+        }else{
+          console.log('invalido');
+
+        }
+        console.log(this.veiculos);
 
   }
 
@@ -76,7 +81,11 @@ export class AddProprietariosComponent implements OnInit {
      veiculo: this.formBuilder.array([this.createVeiculo()])
     });
 
-    console.log(this.veiculosService.listarVeiculos());
+    this.veiculosService.listarVeiculos().subscribe((veiculo: Veiculos) => this.v = {
+      "id": veiculo.id, 
+      "modelo": veiculo.modelo
+    });
+    console.log(this.v.modelo);
     
   }
 
