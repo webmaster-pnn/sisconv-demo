@@ -23,7 +23,9 @@ export class AddProprietariosComponent implements OnInit {
   lastValue = this.teste[--this.length];
   formulario: FormGroup;
   veiculo: FormArray;
-  veiculos: Veiculos[];
+  veiculos: Veiculos[] = [
+    
+  ];
 
   v: Veiculos = new Veiculos();
 
@@ -70,6 +72,7 @@ export class AddProprietariosComponent implements OnInit {
 
         }
         console.log(this.veiculos);
+        // this.veiculosService.adicionarVeiculos(this.veiculo).subscribe();
 
   }
 
@@ -81,11 +84,8 @@ export class AddProprietariosComponent implements OnInit {
      veiculo: this.formBuilder.array([this.createVeiculo()])
     });
 
-    this.veiculosService.listarVeiculos().subscribe((veiculo: Veiculos) => this.v = {
-      "id": veiculo.id, 
-      "modelo": veiculo.modelo
-    });
-    console.log(this.v.modelo);
+    this.veiculosService.listarVeiculos().subscribe((veiculo: Veiculos) => this.v = veiculo);
+    
     
   }
 
@@ -102,13 +102,13 @@ export class AddProprietariosComponent implements OnInit {
    
     this.veiculo= this.formulario.get('veiculo') as FormArray;
     this.veiculo.push(this.createVeiculo());
-    this.veiculosService.adicionarVeiculos().subscribe();
 
 
   }
 
   createVeiculo(): FormGroup{
     return this.formBuilder.group({
+      id: null,
       modelo:''
     });
   }

@@ -25,14 +25,14 @@ export class VeiculosService {
     return this.http.get<Veiculos>(this.API);
   }
 
-  adicionarVeiculos(): Observable<Carro>{
+  adicionarVeiculos(carro): Observable<Carro>{
     
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Carro>(this.API, JSON.stringify(this.veiculo), httpOptions);
+    return this.http.post<Carro>(this.API,JSON.stringify(carro), httpOptions);
   }
 
 }
