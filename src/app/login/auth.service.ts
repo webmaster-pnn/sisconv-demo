@@ -13,6 +13,8 @@ export class AuthService {
  
   
   autenticar =new EventEmitter<boolean>();
+  private usuarioAutenticado: boolean = false;
+
   constructor(private router: Router) { 
     
    }
@@ -20,14 +22,23 @@ export class AuthService {
    login(usuario: Usuario){
   
     if(usuario.nip == '16115597' && usuario.senha == '16115597'){
-      this.router.navigate(['/home']);
+
       this.autenticar.emit(true);
+      this.usuarioAutenticado = true;
+      this.router.navigate(['/home']);
+      
     } else{
       
       this.autenticar.emit(false);
+      this.usuarioAutenticado = true;
+
 
     }
     
-  } 
+  }
+  
+  getAuth(){
+    return this.usuarioAutenticado;
+  }
   
 }

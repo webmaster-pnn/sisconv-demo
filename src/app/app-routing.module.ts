@@ -5,12 +5,25 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProprietariosComponent } from './proprietarios/proprietarios.component';
 import { CartoesComponent } from './cartoes/cartoes.component';
+import { AuthGuard } from './guards/auth.guard';
+import { ProprietariosGuard } from './proprietarios/proprietarios.guard';
 
 
 const routes: Routes = [
   {path: '', pathMatch:'full', redirectTo: '/login' },
-  {path: 'login', component: LoginComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'login', 
+    component: LoginComponent,
+    
+  },
+  {path: 'home', 
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {path: 'proprietarios', 
+    loadChildren: 'app/proprietarios/proprietarios.module#ProprietariosModule',
+    canActivate: [AuthGuard],
+    canActivateChild: [ProprietariosGuard]
+  }
   
 ];
 
