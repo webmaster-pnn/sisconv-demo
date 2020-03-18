@@ -45,7 +45,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule
   ],
   providers: [
-    {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'auto'}},
+    {provide: 
+      MAT_LABEL_GLOBAL_OPTIONS, 
+      useValue: {float: 'auto'}
+      
+    },
     { provide: MatPaginatorIntl, useClass: ProprietariosComponent},
   
     VeiculoServicoService,

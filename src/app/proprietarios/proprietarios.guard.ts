@@ -11,14 +11,15 @@ export class ProprietariosGuard implements CanActivateChild {
     private authService: AuthService,
     private router: Router
   ){}
-  
   canActivateChild(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | boolean) {
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(this.authService.getAuth()){
+        console.log('guarda filho true');
         return true;
+       
       }
-      console.log('falso');
+      console.log('guarda filho');
       this.router.navigate(['/login']);
       return false;
   }

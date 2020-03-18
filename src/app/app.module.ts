@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthService } from './login/auth.service';
 import { ProprietariosModule } from './proprietarios/proprietarios.module';
 import { CartoesModule } from './cartoes/cartoes.module';
+import { ProprietariosGuard } from './proprietarios/proprietarios.guard';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CartoesModule } from './cartoes/cartoes.module';
     BrowserAnimationsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    ProprietariosGuard
     
     
   ],

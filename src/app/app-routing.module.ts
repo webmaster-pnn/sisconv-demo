@@ -10,7 +10,11 @@ import { ProprietariosGuard } from './proprietarios/proprietarios.guard';
 
 
 const routes: Routes = [
-  {path: '', pathMatch:'full', redirectTo: '/login' },
+  {path: '', 
+    pathMatch:'full', 
+    redirectTo: '/home',
+    canActivate: [AuthGuard]
+  },
   {path: 'login', 
     component: LoginComponent,
     
@@ -18,11 +22,6 @@ const routes: Routes = [
   {path: 'home', 
     component: HomeComponent,
     canActivate: [AuthGuard]
-  },
-  {path: 'proprietarios', 
-    loadChildren: 'app/proprietarios/proprietarios.module#ProprietariosModule',
-    canActivate: [AuthGuard],
-    canActivateChild: [ProprietariosGuard]
   }
   
 ];

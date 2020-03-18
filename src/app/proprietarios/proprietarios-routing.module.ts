@@ -4,11 +4,15 @@ import { AddProprietariosComponent } from './add-proprietarios/add-proprietarios
 import { ProprietariosComponent } from './proprietarios.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
+import { ProprietariosGuard } from './proprietarios.guard';
 
 
 const routes: Routes = [
-  {path: 'pesquisar', component: ProprietariosComponent  },
-  {path: 'adicionar', component: AddProprietariosComponent},
+  {path: 'proprietarios/pesquisar', 
+    component: ProprietariosComponent
+  },
+  {path: 'proprietarios/adicionar', component: AddProprietariosComponent},
   { path: 'proprietarios/editar/:id', component: EditProprietariosComponent },
   {path: 'proprietarios/remover', component: DelProprietariosComponent}
 
