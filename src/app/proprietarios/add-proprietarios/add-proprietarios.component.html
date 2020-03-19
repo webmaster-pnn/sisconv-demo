@@ -13,6 +13,44 @@
         
         <form [formGroup]="formulario" (ngSubmit) = "onSubmit()">
             <div>
+
+
+                <mat-form-field appearance="outline" id="nome">
+                    <mat-label>Nome</mat-label>
+                    <input matInput placeholder="Digite seu nome completo." formControlName="nome">
+                </mat-form-field>
+        
+                <mat-form-field appearance="outline" id="nip">
+                    <mat-label>Nip</mat-label>
+                    <input matInput placeholder="Digite seu nip"   mask="00.0000.00" formControlName="nip">
+                    <!-- <mat-error>{{ getNip() }}</mat-error> -->
+                </mat-form-field> 
+                
+                <mat-form-field appearance="outline" >
+                    <mat-label> Email </mat-label>
+                    <input matInput placeholder="joao@exemplo.com"  formControlName="email">
+                    <!-- <mat-error *ngIf = "formulario.get('email').invalid"> {{ emailErro() }} </mat-error> -->
+                
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>CNH</mat-label>
+                    <input matInput placeholder="Digite a CNH"     mask="00000000000"  formControlName="cnh">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" >
+                    <mat-label>N° Cartão do estacionamento</mat-label>
+                    <input matInput placeholder="Digite o numero do cartao"    mask="000" formControlName="cartao">
+                </mat-form-field>
+
+
+
+
+
+
+                <!-- veiculos -->
+
+
                 <h4 >Veiculo  <a  (click) = "incrementa()" class="adicionar"><i class="fas fa-plus-circle"></i></a></h4>
                 <div formArrayName="veiculo" *ngFor="let veiculos of formulario.get('veiculo').controls; let i = index">
                     <br>

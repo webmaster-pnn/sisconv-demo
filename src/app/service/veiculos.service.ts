@@ -1,8 +1,9 @@
-import { Carro } from './../model/Carro';
+import { Proprietarios } from './../model/proprietarios';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { Veiculos } from '../model/veiculos';
 
 
@@ -25,14 +26,16 @@ export class VeiculosService {
     return this.http.get<Veiculos>(this.API);
   }
 
-  adicionarVeiculos(carro): Observable<Carro>{
+
+
+  adicionarVeiculos(v): Observable<Veiculos>{
     
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    return this.http.post<Carro>(this.API,JSON.stringify(carro), httpOptions);
+    return this.http.post<Veiculos>(this.API,JSON.stringify(v), httpOptions);
   }
 
 }

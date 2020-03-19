@@ -1,4 +1,4 @@
-export class Posto {
+export class Cor {
     id: number;
     descricao: String;
 }

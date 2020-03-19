@@ -4,11 +4,12 @@ export class Veiculos {
     
     id: number;
     modelo: String;
-    // montadora: String;
-    // ano: String;
-    // placa: String;
-    // chassi: String;
-    // cor: String;
+    montadora: String;
+    ano: String;
+    placa: String;
+    chassi: String;
+    idcor: number;
+    idProprietario: number;
 
     
 

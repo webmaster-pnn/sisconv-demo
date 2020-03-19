@@ -1,36 +1,188 @@
 {
+  "proprietarios": [
+    {
+      "id": 1,
+      "cartao": "001",
+      "nome": "carlos",
+      "email": "carlos@gmail.com",
+      "nip": "16115597",
+      "cnh": "06987439947",
+      "status": true,
+      "idPosto": 1,
+      "idSetor": 1
+    },
+    {
+      "cartao": "022",
+      "nome": "Ruan aprigioss M Martins",
+      "email": "webssmaster@marinha.mil.br",
+      "nip": "16115597",
+      "cnh": "16116161616",
+      "status": true,
+      "idPosto": 1,
+      "idSetor": 1,
+      "id": 2
+    }
+  ],
   "veiculos": [
     {
       "id": 1,
-      "modelo": "fiesta"
+      "modelo": "passat",
+      "montadora": "Volkswagen",
+      "ano": "1999",
+      "placa": "CXZ-4402",
+      "chassi": "123456789ABCDEFGH",
+      "idCor": 2,
+      "idProprietario": 1
     },
     {
-      "id": 2
+      "id": 2,
+      "modelo": "carro 1",
+      "montadora": null,
+      "ano": null,
+      "placa": null,
+      "chassi": null,
+      "idcor": 2,
+      "idProprietario": 2
     },
     {
-      "id": 3
-    },
-    [],
+      "id": 3,
+      "modelo": "carro 2",
+      "montadora": null,
+      "ano": null,
+      "placa": null,
+      "chassi": null,
+      "idcor": 2,
+      "idProprietario": 2
+    }
+  ],
+  "cor": [
     {
-      "id": 5
-    },
-    {
-      "id": 6
-    },
-    {
-      "id": 7
-    },
-    {
-      "id": 8
-    },
-    {
-      "id": 9
+      "id": 1,
+      "descricao": "azul"
     },
     {
-      "id": 10
+      "id": 2,
+      "descricao": "preto"
     },
     {
-      "id": 11
+      "id": 3,
+      "descricao": "prata"
+    },
+    {
+      "id": 4,
+      "descricao": "cinza"
+    },
+    {
+      "id": 5,
+      "descricao": "amarelo"
+    },
+    {
+      "id": 6,
+      "descricao": "vermelho"
+    },
+    {
+      "id": 7,
+      "descricao": "branco"
+    }
+  ],
+  "posto": [
+    {
+      "id": 1,
+      "descricao": "MN"
+    },
+    {
+      "id": 2,
+      "descricao": "CB"
+    },
+    {
+      "id": 3,
+      "descricao": "1SG"
+    },
+    {
+      "id": 4,
+      "descricao": "2SG"
+    },
+    {
+      "id": 5,
+      "descricao": "3SG"
+    },
+    {
+      "id": 6,
+      "descricao": "SO"
+    },
+    {
+      "id": 7,
+      "descricao": "GR"
+    },
+    {
+      "id": 8,
+      "descricao": "2T"
+    },
+    {
+      "id": 9,
+      "descricao": "1T"
+    },
+    {
+      "id": 10,
+      "descricao": "CT"
+    },
+    {
+      "id": 11,
+      "descricao": "CC"
+    },
+    {
+      "id": 12,
+      "descricao": "CF"
+    },
+    {
+      "id": 13,
+      "descricao": "CM"
+    }
+  ],
+  "setor": [
+    {
+      "id": 1,
+      "descricao": "CPD"
+    },
+    {
+      "id": 2,
+      "descricao": "SAME"
+    },
+    {
+      "id": 3,
+      "descricao": "GABINETE"
+    },
+    {
+      "id": 4,
+      "descricao": "RANCHO"
+    },
+    {
+      "id": 5,
+      "descricao": "ODONTO"
+    },
+    {
+      "id": 6,
+      "descricao": "RAIO-X"
+    },
+    {
+      "id": 7,
+      "descricao": "AMBULATORIO"
+    },
+    {
+      "id": 8,
+      "descricao": "FISIOTERAPIA"
+    },
+    {
+      "id": 9,
+      "descricao": "INTENDENCIA"
+    },
+    {
+      "id": 10,
+      "descricao": "DIVISAO DE PESSOAL"
+    },
+    {
+      "id": 11,
+      "descricao": "SECOM"
     }
   ]
 }

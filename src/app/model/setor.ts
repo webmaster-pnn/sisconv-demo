@@ -1,3 +1,4 @@
 export class Setor {
-    nome: String;
+    id: number;
+    descricao: String;
 }
