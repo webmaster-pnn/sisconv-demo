@@ -59,6 +59,30 @@
                         <mat-label>Modelo</mat-label>
                         <input matInput placeholder="Modelo do veiculo"  formControlName="modelo" >
                     </mat-form-field>
+
+                    <mat-form-field appearance="outline" >
+                            <mat-label>montadora</mat-label>
+                            <mat-select formControlName="idMontadora">
+                                    <mat-option *ngFor="let m of montadoraLista" [value]="m.id" > 
+                                      {{ m.descricao }}
+                                    </mat-option>
+                            </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" >
+                            <mat-label>Ano</mat-label>
+                            <input matInput placeholder="Ano"  formControlName="ano" >
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" >
+                            <mat-label>Placa</mat-label>
+                            <input matInput placeholder="Placa"  formControlName="placa" >
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" >
+                            <mat-label>Chassi</mat-label>
+                            <input matInput placeholder="Chassi"  formControlName="chassi" >
+                    </mat-form-field>
                      </div>
                     <hr *ngIf="formulario.value.veiculo.length !== 1">
                 </div>

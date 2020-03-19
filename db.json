@@ -12,47 +12,55 @@
       "idSetor": 1
     },
     {
-      "cartao": "022",
-      "nome": "Ruan aprigioss M Martins",
-      "email": "webssmaster@marinha.mil.br",
-      "nip": "16115597",
-      "cnh": "16116161616",
+      "id": 2,
+      "cartao": "024",
+      "nome": "Andre Luiz Moreira Vieira",
+      "email": "moreira.vieira@marinha.mil.br",
+      "nip": "01010051",
+      "cnh": "20121012012",
       "status": true,
       "idPosto": 1,
-      "idSetor": 1,
-      "id": 2
+      "idSetor": 1
     }
   ],
   "veiculos": [
     {
       "id": 1,
       "modelo": "passat",
-      "montadora": "Volkswagen",
       "ano": "1999",
       "placa": "CXZ-4402",
       "chassi": "123456789ABCDEFGH",
+      "idMontadora": 1,
       "idCor": 2,
       "idProprietario": 1
     },
     {
       "id": 2,
-      "modelo": "carro 1",
-      "montadora": null,
-      "ano": null,
-      "placa": null,
-      "chassi": null,
+      "modelo": "Mobi",
+      "ano": "2014",
+      "placa": "bbb-2424",
+      "chassi": "2221215155",
+      "idMontadora": 1,
       "idcor": 2,
       "idProprietario": 2
+    }
+  ],
+  "montadora": [
+    {
+      "id": 1,
+      "descricao": "Volkswagem"
+    },
+    {
+      "id": 2,
+      "descricao": "Ford"
     },
     {
       "id": 3,
-      "modelo": "carro 2",
-      "montadora": null,
-      "ano": null,
-      "placa": null,
-      "chassi": null,
-      "idcor": 2,
-      "idProprietario": 2
+      "descricao": "Nissan"
+    },
+    {
+      "id": 4,
+      "descricao": "Fiat"
     }
   ],
   "cor": [

@@ -9,6 +9,9 @@ import { Posto } from './../../model/posto';
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { Veiculos } from 'src/app/model/veiculos';
+import { Montadora } from 'src/app/model/montadora';
+import { MontadoraService } from 'src/app/service/montadora.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-proprietarios',
@@ -27,14 +30,18 @@ export class AddProprietariosComponent implements OnInit {
 
 
   formulario: FormGroup;
-  veiculo: FormArray;
+  veiculoForm: FormArray;
+
 
   proprietario: Proprietarios = new Proprietarios();
   veiculos: Veiculos = new Veiculos();
-  veiculoLista:  Array<Veiculos>;
-  setor: Setor = new Setor();
-  posto: Posto = new Posto();
-  cor: Cor = new Cor();
+
+  montadoraLista: Montadora [];
+  setorLista: Setor[];
+  postoLista: Posto[];
+  corLista: Cor[];
+
+  
 
 
  
@@ -42,7 +49,8 @@ export class AddProprietariosComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private veiculosService: VeiculosService,
-    private proprietariosService: ProprietariosService
+    private proprietariosService: ProprietariosService,
+    private montadoraService: MontadoraService
     
     ) { } 
 
@@ -50,18 +58,21 @@ export class AddProprietariosComponent implements OnInit {
     
     this.setProprietarios();
     this.setVeiculos();
-
+    console.log(this.formulario);
 
 
 
   }
 
   ngOnInit(){
-    this.createformulario();
-    this.veiculo= this.formulario.get('veiculo') as FormArray;
+
     
 
-    // this.veiculosService.listarVeiculos().subscribe((veiculo: Veiculos) => this.v = veiculo);
+    this.getMontadora();
+    this.createformulario();
+
+    this.veiculoForm = this.formulario.get('veiculo') as FormArray;
+
     
     
   }
@@ -78,7 +89,7 @@ export class AddProprietariosComponent implements OnInit {
   incrementa(){
    
    
-    this.veiculo.push(this.createVeiculo());
+    this.veiculoForm.push(this.createVeiculo());
     
 
   }
@@ -92,9 +103,8 @@ export class AddProprietariosComponent implements OnInit {
       nip:[this.proprietario.nip, Validators.required ],
       cnh: [this.proprietario.cnh, Validators.required],
       veiculo: this.formBuilder.array([this.createVeiculo()]),
-      cor: this.formBuilder.array([this.createCor()]),
-      posto: this.formBuilder.array([this.createPosto()]),
-      setor: this.formBuilder.array([this.createSetor()])
+      idPosto: [this.proprietario.idPosto, Validators.required],
+      idSetor: [this.proprietario.idSetor, Validators.required]
     });
 
 
@@ -103,31 +113,17 @@ export class AddProprietariosComponent implements OnInit {
     return this.formBuilder.group({
       id: this.veiculos.id,
       modelo:[this.veiculos.modelo, Validators.required],
-      montadora:[this.veiculos.montadora, Validators.required],
       ano:[this.veiculos.ano, Validators.required],
       placa:[this.veiculos.placa, Validators.required],
-      chassi:[this.veiculos.chassi, Validators.required]
+      chassi:[this.veiculos.chassi, Validators.required],
+      idMontadora:[this.veiculos.id, Validators.required],
+      idCor: [this.veiculos.idCor, Validators.required]
+
 
     });
   }
-  createCor(){
-    return this.formBuilder.group({
-      id: this.cor.id,
-      descricao: this.cor.descricao
-    })
-  }
-  createPosto(){
-    return this.formBuilder.group({
-      id: this.posto.id,
-      descricao: this.posto.descricao
-    })
-  }
-  createSetor(){
-    return this.formBuilder.group({
-      id: this.setor.id,
-      descricao: this.setor.descricao
-    })
-  }
+
+  
 
 
 
@@ -149,21 +145,28 @@ export class AddProprietariosComponent implements OnInit {
  
   setVeiculos(){
 
-  console.log(this.veiculoLista);
-    this.veiculo.controls.forEach(v => {
+      this.veiculoForm.controls.forEach(v => {
       this.veiculos.id = v.get('id').value
       this.veiculos.modelo = v.get('modelo').value
-      this.veiculos.montadora = v.get('montadora').value
       this.veiculos.ano = v.get('ano').value
       this.veiculos.placa = v.get('placa').value
       this.veiculos.chassi = v.get('chassi').value
-      this.veiculos.idcor = 2
-      this.veiculos.idProprietario = 2
+      this.veiculos.idMontadora = v.get('idMontadora').value
+      this.veiculos.idCor = v.get('idCor').value
+      this.veiculos.idProprietario = 1
       
       
       this.veiculosService.adicionarVeiculos(this.veiculos).subscribe()
 
     });
+  }
+
+  getMontadora(){
+
+    this.montadoraService.listarMontadora().subscribe((m: Montadora[]) => {
+      this.montadoraLista = m
+    } );
+    
   }
   
 }
