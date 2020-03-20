@@ -124,21 +124,13 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
 
       return p;
             
-    });  
+    }, 
+    error => alert(`Erro ao buscar os dados : ${error}`));  
       
   }
 
-  getPosto(){
-    this.dataSource.data.forEach(
-      data => {
-        
-        const posto$ = this.postoService.listarPostoId(data.idPosto);
-        posto$.subscribe( (posto: Posto) => {
-          data.descPosto = posto.descricao;
-        })
-      }
-    );
+  
     
-  }
+ 
 
 }

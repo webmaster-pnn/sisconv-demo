@@ -57,7 +57,8 @@ export class AddProprietariosComponent implements OnInit {
     private montadoraService: MontadoraService,
     private postoService: PostoService,
     private setorService: SetorService,
-    private corService: CorService
+    private corService: CorService,
+    private route: Router
     
     ) { } 
 
@@ -65,9 +66,11 @@ export class AddProprietariosComponent implements OnInit {
     if(this.formulario.valid){
       this.setProprietarios();
       this.setVeiculos();
+    } else {
+      alert('Campos invalidos');
     }
 
-    alert('Campos invalidos');
+    
 
 
 
@@ -181,7 +184,9 @@ export class AddProprietariosComponent implements OnInit {
       this.veiculosService.adicionarVeiculos(this.veiculos)
         .pipe(
           take(1))
-        .subscribe(   success => alert('gravado com sucesso!'), error => alert(`Erro ao gravar os dados : ${error}`))
+        .subscribe(   success => {alert('gravado com sucesso!')
+                                this.route.navigate(['/proprietarios']) }, 
+                        error => alert(`Erro ao gravar os dados : ${error}`))
 
     });
   }

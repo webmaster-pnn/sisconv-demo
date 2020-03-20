@@ -109,6 +109,28 @@
       "status": true,
       "idPosto": 6,
       "idSetor": 1
+    },
+    {
+      "id": 11,
+      "cartao": "001",
+      "nome": "Pluvie pau no cu",
+      "email": "paunocu@marinha.mil.br",
+      "nip": "01010101",
+      "cnh": "01221215151",
+      "status": true,
+      "idPosto": 1,
+      "idSetor": 10
+    },
+    {
+      "id": 12,
+      "cartao": "022",
+      "nome": "Carlos Henrique Pereira Machado Júnior",
+      "email": "machadopnn@gmail.com",
+      "nip": "16115597",
+      "cnh": "12121212121",
+      "status": true,
+      "idPosto": 3,
+      "idSetor": 4
     }
   ],
   "veiculos": [
@@ -230,6 +252,26 @@
       "chassi": "15SD515A1D5C",
       "idMontadora": 1,
       "idCor": 6,
+      "idProprietario": 1
+    },
+    {
+      "id": 13,
+      "modelo": "fiesta",
+      "ano": "2012",
+      "placa": "cxz-4401",
+      "chassi": "2221215155",
+      "idMontadora": 2,
+      "idCor": 3,
+      "idProprietario": 1
+    },
+    {
+      "id": 14,
+      "modelo": "carro 1",
+      "ano": "2012",
+      "placa": "cxz-4401",
+      "chassi": "2221215155",
+      "idMontadora": 3,
+      "idCor": 2,
       "idProprietario": 1
     }
   ],
