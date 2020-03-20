@@ -10,7 +10,10 @@ export class Proprietarios {
     cnh: String;
     status: boolean;
     idPosto: number;
+    descPosto: String;
     idSetor: number;
+    descSetor: String;
+    editar: any;
         
 
 }

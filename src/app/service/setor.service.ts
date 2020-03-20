@@ -21,4 +21,8 @@ export class SetorService {
   listarSetor(){
     return this.http.get<Setor[]>(this.API);
   }
+
+  listarSetorId(id){
+    return this.http.get(`${this.API}/${id}`);
+  }
 }

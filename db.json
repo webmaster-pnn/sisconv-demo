@@ -87,6 +87,28 @@
       "status": true,
       "idPosto": 2,
       "idSetor": 2
+    },
+    {
+      "id": 9,
+      "cartao": "022",
+      "nome": "joao castro souza",
+      "email": "webmaster@marinha.mil.br",
+      "nip": "11111111",
+      "cnh": "16116161616",
+      "status": true,
+      "idPosto": 2,
+      "idSetor": 2
+    },
+    {
+      "id": 10,
+      "cartao": "024",
+      "nome": "Henrique carolino",
+      "email": "joao.henrique@marinha.mil.br",
+      "nip": "81002115",
+      "cnh": "15121114141",
+      "status": true,
+      "idPosto": 6,
+      "idSetor": 1
     }
   ],
   "veiculos": [
@@ -188,6 +210,26 @@
       "chassi": "2221215155",
       "idMontadora": 1,
       "idCor": 1,
+      "idProprietario": 1
+    },
+    {
+      "id": 11,
+      "modelo": "carro 1",
+      "ano": "2012",
+      "placa": "cxz-4401",
+      "chassi": "2221215155",
+      "idMontadora": 1,
+      "idCor": 2,
+      "idProprietario": 1
+    },
+    {
+      "id": 12,
+      "modelo": "Sandero",
+      "ano": "2018",
+      "placa": "CKS-1514",
+      "chassi": "15SD515A1D5C",
+      "idMontadora": 1,
+      "idCor": 6,
       "idProprietario": 1
     }
   ],

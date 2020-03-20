@@ -6,6 +6,13 @@ import {MatPaginator, MatPaginatorIntl} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 // servicos
 import { VeiculoServicoService } from 'src/app/veiculos/veiculo-servico.service';
+import { ProprietariosService } from 'src/app/service/proprietarios.service';
+import { Proprietarios } from 'src/app/model/proprietarios';
+import { take } from 'rxjs/operators';
+import { PostoService } from 'src/app/service/posto.service';
+import { Posto } from 'src/app/model/posto';
+import { Setor } from 'src/app/model/setor';
+import { SetorService } from 'src/app/service/setor.service';
 
 
 
@@ -20,16 +27,16 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
   v: VeiculoServicoService;
  
   // instancia de proprietario
-  proprietario = [];
+  proprietario: Proprietarios[];
  
   // variaveis
   tabela_vazia: boolean = false;
 
   // colunas da tabela
-  displayedColumns: string[] = ['grad','nome', 'nip', 'setor','cnh', 'editar'];
+  displayedColumns: string[] = ['posto', 'nome', 'nip', 'setor','cnh', 'editar'];
  
   // criando um novo objeto da tabela data source e passando o proprietario como parametro
-  dataSource = new MatTableDataSource(this.proprietario);
+  dataSource: MatTableDataSource<Proprietarios>;
 
   // permite a atualização em tempo real da tabela.
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -46,12 +53,15 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
 
   }
 
-  constructor(veiculo_servico: VeiculoServicoService) { 
+  constructor(
+    private proprietarioService: ProprietariosService,
+    private postoService: PostoService,
+    private setorService: SetorService
+    ) { 
   
     // herdando objetos da classe pai e utilizando para alterar elementos do paginator
   
     super();
-    this.v = veiculo_servico;
   
     // paginator tradução
     this.itemsPerPageLabel = 'Itens por pagina';
@@ -71,15 +81,64 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
   }
 
   ngOnInit() {
+
+    this.dataSource = new MatTableDataSource();
+    this.getProprietarios();
+    // this.getPosto();
+    
+    
     // atribuindo ao proprietario a paginação e os filtros.
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    // verificando quando o objeto estiver vazio
-    if(this.proprietario.length == 0){
-      this.tabela_vazia = true;
-    }
+    
     
 
+  }
+
+  getProprietarios(){
+    const proprietario$ = this.proprietarioService.listarProprietario();
+    proprietario$.subscribe((p: Proprietarios []) => {
+
+      p.forEach(data => {
+      
+        const posto$ = this.postoService.listarPostoId(data.idPosto);
+        posto$.subscribe( (posto: Posto) => {
+          data.descPosto = posto.descricao;
+        })
+      })
+
+      p.forEach(data => {
+      
+        const setor$ = this.setorService.listarSetorId(data.idSetor);
+        setor$.subscribe( (setor: Setor) => {
+          data.descSetor = setor.descricao;
+        })
+      })
+
+      this.dataSource.data = p
+      
+      // verificando quando o objeto estiver vazio
+      if(p.length == 0){
+        this.tabela_vazia = true;
+      }
+
+      return p;
+            
+    });  
+      
+  }
+
+  getPosto(){
+    this.dataSource.data.forEach(
+      data => {
+        
+        const posto$ = this.postoService.listarPostoId(data.idPosto);
+        posto$.subscribe( (posto: Posto) => {
+          data.descPosto = posto.descricao;
+        })
+      }
+    );
+    
   }
 
 }
