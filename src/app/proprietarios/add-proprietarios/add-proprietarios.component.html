@@ -25,6 +25,24 @@
                     <input matInput placeholder="Digite seu nip"   mask="00.0000.00" formControlName="nip">
                     <!-- <mat-error>{{ getNip() }}</mat-error> -->
                 </mat-form-field> 
+
+                <mat-form-field appearance="outline" >
+                        <mat-label>Posto</mat-label>
+                        <mat-select formControlName="idPosto">
+                                <mat-option *ngFor="let p of postoLista" [value]="p.id" > 
+                                  {{ p.descricao }}
+                                </mat-option>
+                        </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" >
+                        <mat-label>Setor</mat-label>
+                        <mat-select formControlName="idSetor">
+                                <mat-option *ngFor="let s of setorLista" [value]="s.id" > 
+                                  {{ s.descricao }}
+                                </mat-option>
+                        </mat-select>
+                </mat-form-field>
                 
                 <mat-form-field appearance="outline" >
                     <mat-label> Email </mat-label>
@@ -82,6 +100,15 @@
                     <mat-form-field appearance="outline" >
                             <mat-label>Chassi</mat-label>
                             <input matInput placeholder="Chassi"  formControlName="chassi" >
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" >
+                            <mat-label>Cor</mat-label>
+                            <mat-select formControlName="idCor">
+                                    <mat-option *ngFor="let c of corLista" [value]="c.id" > 
+                                      {{ c.descricao }}
+                                    </mat-option>
+                            </mat-select>
                     </mat-form-field>
                      </div>
                     <hr *ngIf="formulario.value.veiculo.length !== 1">

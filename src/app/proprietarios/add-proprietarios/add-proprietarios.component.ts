@@ -12,6 +12,9 @@ import { Veiculos } from 'src/app/model/veiculos';
 import { Montadora } from 'src/app/model/montadora';
 import { MontadoraService } from 'src/app/service/montadora.service';
 import { Observable } from 'rxjs';
+import { PostoService } from 'src/app/service/posto.service';
+import { SetorService } from 'src/app/service/setor.service';
+import { CorService } from 'src/app/service/cor.service';
 
 @Component({
   selector: 'app-add-proprietarios',
@@ -50,7 +53,10 @@ export class AddProprietariosComponent implements OnInit {
     private formBuilder: FormBuilder,
     private veiculosService: VeiculosService,
     private proprietariosService: ProprietariosService,
-    private montadoraService: MontadoraService
+    private montadoraService: MontadoraService,
+    private postoService: PostoService,
+    private setorService: SetorService,
+    private corService: CorService
     
     ) { } 
 
@@ -69,6 +75,9 @@ export class AddProprietariosComponent implements OnInit {
     
 
     this.getMontadora();
+    this.getPosto();
+    this.getSetor();
+    this.getCor();
     this.createformulario();
 
     this.veiculoForm = this.formulario.get('veiculo') as FormArray;
@@ -135,8 +144,8 @@ export class AddProprietariosComponent implements OnInit {
     this.proprietario.nip = this.formulario.get('nip').value
     this.proprietario.cnh = this.formulario.get('cnh').value
     this.proprietario.status = true
-    this.proprietario.idPosto = 1
-    this.proprietario.idSetor = 1
+    this.proprietario.idPosto = this.formulario.get('idPosto').value
+    this.proprietario.idSetor = this.formulario.get('idSetor').value
 
     this.proprietariosService.adicionarProprietario(this.proprietario).subscribe();
 
@@ -165,8 +174,22 @@ export class AddProprietariosComponent implements OnInit {
 
     this.montadoraService.listarMontadora().subscribe((m: Montadora[]) => {
       this.montadoraLista = m
-    } );
-    
+    } );   
   }
   
+  getPosto(){
+    this.postoService.listarPosto().subscribe((p: Posto[]) => {
+      this.postoLista = p
+    });
+  }
+  getSetor(){
+    this.setorService.listarSetor().subscribe((s: Setor[]) => {
+      this.setorLista = s
+    });
+  }
+  getCor(){
+    this.corService.listarCor().subscribe((c: Cor[]) => {
+      this.corLista = c
+    });
+  }
 }

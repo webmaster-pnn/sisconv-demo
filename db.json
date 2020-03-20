@@ -21,6 +21,17 @@
       "status": true,
       "idPosto": 1,
       "idSetor": 1
+    },
+    {
+      "id": 3,
+      "cartao": "022",
+      "nome": "Ruan aprigio M Martins",
+      "email": "webmaster@marinha.mil.br",
+      "nip": "16115597",
+      "cnh": "16116161616",
+      "status": true,
+      "idPosto": 4,
+      "idSetor": 3
     }
   ],
   "veiculos": [
@@ -43,6 +54,16 @@
       "idMontadora": 1,
       "idcor": 2,
       "idProprietario": 2
+    },
+    {
+      "id": 3,
+      "modelo": "polo",
+      "ano": "2012",
+      "placa": "cxz-4401",
+      "chassi": "2221215155",
+      "idMontadora": 1,
+      "idCor": 3,
+      "idProprietario": 1
     }
   ],
   "montadora": [
