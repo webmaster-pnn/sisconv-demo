@@ -47,6 +47,9 @@ export class ProprietariosService {
     return this.http.get(this.API, httpOptions).pipe(
       map(this.extractData));
   }
+  listarProprietarioId(id){
+    return this.http.get<Proprietarios>(`${this.API}/${id}`).pipe( take(1));
+  }
 
   private extractData(res: Response) {
     return res || {}; // If 'res' is null, it returns empty object

@@ -13,6 +13,7 @@ import { PostoService } from 'src/app/service/posto.service';
 import { Posto } from 'src/app/model/posto';
 import { Setor } from 'src/app/model/setor';
 import { SetorService } from 'src/app/service/setor.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -56,7 +57,8 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
   constructor(
     private proprietarioService: ProprietariosService,
     private postoService: PostoService,
-    private setorService: SetorService
+    private setorService: SetorService,
+    private route: ActivatedRoute
     ) { 
   
     // herdando objetos da classe pai e utilizando para alterar elementos do paginator
@@ -83,6 +85,8 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
   ngOnInit() {
 
     this.dataSource = new MatTableDataSource();
+    // const data = this.route.snapshot.data['proprietarios'];
+    // this.dataSource.data = data;
     this.getProprietarios();
     // this.getPosto();
     

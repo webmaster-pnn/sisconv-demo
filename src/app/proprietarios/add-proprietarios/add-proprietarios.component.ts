@@ -2,7 +2,7 @@ import { Cor } from './../../model/cor';
 import { ProprietariosService } from './../../service/proprietarios.service';
 import { Proprietarios } from './../../model/proprietarios';
 import { VeiculosService } from './../../service/veiculos.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../login/auth.service';
 import { Setor } from './../../model/setor';
 import { Posto } from './../../model/posto';
@@ -58,7 +58,9 @@ export class AddProprietariosComponent implements OnInit {
     private postoService: PostoService,
     private setorService: SetorService,
     private corService: CorService,
-    private route: Router
+    private route: Router,
+    private router: ActivatedRoute
+
     
     ) { } 
 
@@ -79,12 +81,15 @@ export class AddProprietariosComponent implements OnInit {
   ngOnInit(){
 
     
-
+    
     this.getMontadora();
     this.getPosto();
     this.getSetor();
     this.getCor();
+    this.proprietario = this.router.snapshot.data['proprietarios'];
     this.createformulario();
+    
+  
 
     this.veiculoForm = this.formulario.get('veiculo') as FormArray;
 

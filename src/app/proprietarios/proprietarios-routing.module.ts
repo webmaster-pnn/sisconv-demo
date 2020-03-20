@@ -7,16 +7,33 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { AuthGuard } from '../guards/auth.guard';
 import { ProprietariosGuard } from './proprietarios.guard';
+import { ProprietariosResolverGuard } from '../guards/proprietarios-resolver.guard';
 
 
 const routes: Routes = [
-  {path: '', 
-    component: ProprietariosComponent, 
+  {
+    path: '',
+    component: ProprietariosComponent,
     children: [
-      { path: '', component: ListarProprietariosComponent},
-      { path: 'adicionar', component: AddProprietariosComponent},
-      { path: 'editar/:id', component: AddProprietariosComponent },
-      { path: 'remover', component: DelProprietariosComponent}
+      {
+        path: '', component: ListarProprietariosComponent,
+        resolve: {
+          proprietarios: ProprietariosResolverGuard
+        }
+      },
+      {
+        path: 'adicionar', component: AddProprietariosComponent,
+        resolve: {
+          proprietarios: ProprietariosResolverGuard
+        }
+      },
+      {
+        path: 'editar/:id', component: AddProprietariosComponent,
+        resolve: {
+          proprietarios: ProprietariosResolverGuard
+        }
+      },
+      { path: 'remover', component: DelProprietariosComponent }
     ]
   },
 
