@@ -23,19 +23,21 @@
                 <mat-form-field appearance="outline" id="nip">
                     <mat-label>Nip</mat-label>
                     <input matInput placeholder="Digite seu nip"   mask="00.0000.00" formControlName="nip">
-                    <!-- <mat-error>{{ getNip() }}</mat-error> -->
+                    <mat-error>{{ nipErro() }}</mat-error>
                 </mat-form-field> 
 
-                <mat-form-field appearance="outline" >
-                        <mat-label>Posto</mat-label>
+                <mat-form-field appearance="outline" class="alinhar" >
+                        <mat-label>Posto/Grad</mat-label>
                         <mat-select formControlName="idPosto">
                                 <mat-option *ngFor="let p of postoLista" [value]="p.id" > 
                                   {{ p.descricao }}
                                 </mat-option>
                         </mat-select>
+                    
+
                 </mat-form-field>
 
-                <mat-form-field appearance="outline" >
+                <mat-form-field appearance="outline" class="alinhar">
                         <mat-label>Setor</mat-label>
                         <mat-select formControlName="idSetor">
                                 <mat-option *ngFor="let s of setorLista" [value]="s.id" > 
@@ -44,10 +46,10 @@
                         </mat-select>
                 </mat-form-field>
                 
-                <mat-form-field appearance="outline" >
+                <mat-form-field appearance="outline" id="email" >
                     <mat-label> Email </mat-label>
                     <input matInput placeholder="joao@exemplo.com"  formControlName="email">
-                    <!-- <mat-error *ngIf = "formulario.get('email').invalid"> {{ emailErro() }} </mat-error> -->
+                    <mat-error *ngIf = "formulario.get('email').invalid"> {{ emailErro() }} </mat-error>
                 
                 </mat-form-field>
 
@@ -78,7 +80,7 @@
                         <input matInput placeholder="Modelo do veiculo"  formControlName="modelo" >
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline" >
+                    <mat-form-field appearance="outline" class="alinhar">
                             <mat-label>montadora</mat-label>
                             <mat-select formControlName="idMontadora">
                                     <mat-option *ngFor="let m of montadoraLista" [value]="m.id" > 
@@ -102,7 +104,7 @@
                             <input matInput placeholder="Chassi"  formControlName="chassi" >
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline" >
+                    <mat-form-field appearance="outline" class="alinhar">
                             <mat-label>Cor</mat-label>
                             <mat-select formControlName="idCor">
                                     <mat-option *ngFor="let c of corLista" [value]="c.id" > 

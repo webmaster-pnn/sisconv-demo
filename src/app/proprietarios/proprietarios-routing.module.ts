@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ListarProprietariosComponent},
       { path: 'adicionar', component: AddProprietariosComponent},
-      { path: 'editar/:id', component: EditProprietariosComponent },
+      { path: 'editar/:id', component: AddProprietariosComponent },
       { path: 'remover', component: DelProprietariosComponent}
     ]
   },

@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 import { PostoService } from 'src/app/service/posto.service';
 import { SetorService } from 'src/app/service/setor.service';
 import { CorService } from 'src/app/service/cor.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-proprietarios',
@@ -61,10 +62,12 @@ export class AddProprietariosComponent implements OnInit {
     ) { } 
 
   onSubmit(){
-    
-    this.setProprietarios();
-    this.setVeiculos();
-    console.log(this.formulario);
+    if(this.formulario.valid){
+      this.setProprietarios();
+      this.setVeiculos();
+    }
+
+    alert('Campos invalidos');
 
 
 
@@ -93,6 +96,16 @@ export class AddProprietariosComponent implements OnInit {
     } else {
       return this.formulario.get('email').hasError('email') ? 'Email invalido!' : '';
     }
+  }
+  nipErro(){
+    if(this.formulario.get('nip').hasError('required')){
+      return 'Digite seu NIP'
+    } 
+  }
+  postoErro(){
+    if(this.formulario.get('posto').hasError('required')){
+      return 'É necessário selecionar o Posto/Grad'
+    } 
   }
 
   incrementa(){
@@ -165,7 +178,10 @@ export class AddProprietariosComponent implements OnInit {
       this.veiculos.idProprietario = 1
       
       
-      this.veiculosService.adicionarVeiculos(this.veiculos).subscribe()
+      this.veiculosService.adicionarVeiculos(this.veiculos)
+        .pipe(
+          take(1))
+        .subscribe(   success => alert('gravado com sucesso!'), error => alert(`Erro ao gravar os dados : ${error}`))
 
     });
   }

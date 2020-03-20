@@ -32,6 +32,61 @@
       "status": true,
       "idPosto": 4,
       "idSetor": 3
+    },
+    {
+      "id": 4,
+      "cartao": "022",
+      "nome": "Ruan aprigio M Martins",
+      "email": "webmaster@marinha.mil.br",
+      "nip": "16115597",
+      "cnh": "16116161616",
+      "status": true,
+      "idPosto": 3,
+      "idSetor": 3
+    },
+    {
+      "id": 5,
+      "cartao": "022",
+      "nome": "Carlos Henrique Pereira Machado Júnior",
+      "email": "machadopnn@gmail.com",
+      "nip": "16115597",
+      "cnh": "16116161616",
+      "status": true,
+      "idPosto": 2,
+      "idSetor": 2
+    },
+    {
+      "id": 6,
+      "cartao": "022",
+      "nome": "Carlos Henrique Pereira Machado Júnior",
+      "email": "machadopnn@gmail.com",
+      "nip": "16115597",
+      "cnh": "16116161616",
+      "status": true,
+      "idPosto": 2,
+      "idSetor": 2
+    },
+    {
+      "id": 7,
+      "cartao": "022",
+      "nome": "Jose Andrade Almeida Peixorto",
+      "email": "jose@marinha.mil.br",
+      "nip": "10101010",
+      "cnh": "12121212121",
+      "status": true,
+      "idPosto": 2,
+      "idSetor": null
+    },
+    {
+      "id": 8,
+      "cartao": "022",
+      "nome": "Carlos Henrique Pereira Machado Júnior",
+      "email": "machadopnn@gmail.com",
+      "nip": "16115597",
+      "cnh": "16116161616",
+      "status": true,
+      "idPosto": 2,
+      "idSetor": 2
     }
   ],
   "veiculos": [
@@ -63,6 +118,76 @@
       "chassi": "2221215155",
       "idMontadora": 1,
       "idCor": 3,
+      "idProprietario": 1
+    },
+    {
+      "id": 4,
+      "modelo": "polo",
+      "ano": "2012",
+      "placa": "bbb-2424",
+      "chassi": "2221215155",
+      "idMontadora": 3,
+      "idCor": 4,
+      "idProprietario": 1
+    },
+    {
+      "id": 5,
+      "modelo": "bora bora",
+      "ano": "2020",
+      "placa": "cxz-4401",
+      "chassi": "2111112114",
+      "idMontadora": 1,
+      "idCor": 3,
+      "idProprietario": 1
+    },
+    {
+      "id": 6,
+      "modelo": "carro 1",
+      "ano": "2012",
+      "placa": "cxz-4401",
+      "chassi": "2221215155",
+      "idMontadora": 2,
+      "idCor": 2,
+      "idProprietario": 1
+    },
+    {
+      "id": 7,
+      "modelo": "Ka",
+      "ano": "1999",
+      "placa": "hzx-9090",
+      "chassi": "chsadjiadd5151515",
+      "idMontadora": 2,
+      "idCor": 2,
+      "idProprietario": 1
+    },
+    {
+      "id": 8,
+      "modelo": "Golf",
+      "ano": "2012",
+      "placa": "cxz-4401",
+      "chassi": "2221215155",
+      "idMontadora": 1,
+      "idCor": 2,
+      "idProprietario": 1
+    },
+    {
+      "id": 9,
+      "modelo": "Doblo",
+      "ano": "2005",
+      "placa": "CXD-4455",
+      "chassi": "ADSD5F4CAS14SADA",
+      "idMontadora": 4,
+      "idCor": 5,
+      "idProprietario": 1
+    },
+    {
+      "id": 10,
+      "modelo": "carro 1",
+      "ano": "2012",
+      "placa": "cxz-4401",
+      "chassi": "2221215155",
+      "idMontadora": 1,
+      "idCor": 1,
       "idProprietario": 1
     }
   ],
