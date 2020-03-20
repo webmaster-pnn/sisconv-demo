@@ -131,6 +131,17 @@
       "status": true,
       "idPosto": 3,
       "idSetor": 4
+    },
+    {
+      "id": 13,
+      "cartao": "033",
+      "nome": "amelio",
+      "email": "amelio@marinha.mil.br",
+      "nip": "16115555",
+      "cnh": "13115615615",
+      "status": true,
+      "idPosto": 13,
+      "idSetor": 10
     }
   ],
   "veiculos": [
@@ -272,6 +283,16 @@
       "chassi": "2221215155",
       "idMontadora": 3,
       "idCor": 2,
+      "idProprietario": 1
+    },
+    {
+      "id": 15,
+      "modelo": "passat",
+      "ano": "1999",
+      "placa": "csd-4452",
+      "chassi": "6555151115515151",
+      "idMontadora": 1,
+      "idCor": 1,
       "idProprietario": 1
     }
   ],
