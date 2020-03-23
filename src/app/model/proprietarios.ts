@@ -1,4 +1,4 @@
-import { Veiculos } from './veiculos';
+import { Veiculos } from 'src/app/model/veiculos';
 
 export class Proprietarios {
     

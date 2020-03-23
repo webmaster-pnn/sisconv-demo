@@ -1,6 +1,6 @@
+import { ProprietariosService } from 'src/app/service/proprietarios.service';
+import { Proprietarios } from 'src/app/model/proprietarios';
 import { Cor } from './../../model/cor';
-import { ProprietariosService } from './../../service/proprietarios.service';
-import { Proprietarios } from './../../model/proprietarios';
 import { VeiculosService } from './../../service/veiculos.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../login/auth.service';
@@ -11,17 +11,18 @@ import { FormControl, Validators, FormBuilder, FormGroup, FormArray } from '@ang
 import { Veiculos } from 'src/app/model/veiculos';
 import { Montadora } from 'src/app/model/montadora';
 import { MontadoraService } from 'src/app/service/montadora.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { PostoService } from 'src/app/service/posto.service';
 import { SetorService } from 'src/app/service/setor.service';
 import { CorService } from 'src/app/service/cor.service';
-import { take } from 'rxjs/operators';
+import { take, map, concatMap, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-proprietarios',
   templateUrl: './add-proprietarios.component.html',
   styleUrls: ['./add-proprietarios.component.css']
 })
+
 export class AddProprietariosComponent implements OnInit {
 
   // variaveis
@@ -29,27 +30,29 @@ export class AddProprietariosComponent implements OnInit {
   hide: boolean = true;
   teste = [1];
   length = this.teste.length;
-  num = this.length + 1; 
+  num = this.length + 1;
   lastValue = this.teste[--this.length];
 
 
   formulario: FormGroup;
   veiculoForm: FormArray;
-
+  id: any;
 
   proprietario: Proprietarios = new Proprietarios();
   veiculos: Veiculos = new Veiculos();
 
-  montadoraLista: Montadora [];
+  proprietarioLista: Proprietarios[];
+  veiculoLista: Veiculos[];
+  montadoraLista: Montadora[];
   setorLista: Setor[];
   postoLista: Posto[];
   corLista: Cor[];
+  t = new Subject<number>();
 
-  
 
 
- 
-  
+
+
   constructor(
     private formBuilder: FormBuilder,
     private veiculosService: VeiculosService,
@@ -61,103 +64,126 @@ export class AddProprietariosComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute
 
-    
-    ) { } 
 
-  onSubmit(){
-    if(this.formulario.valid){
-      this.setProprietarios();
-      this.setVeiculos();
-    } else {
-      alert('Campos invalidos');
-    }
+  ) { }
 
-    
+  onSubmit() {
+    // if (this.formulario.valid) {
+    //   if (this.formulario.get('id').value) {
+    //     this.proprietariosService.atualizarProprietario(this.formulario).subscribe(
+    //       success => { alert('Atualizado com sucesso') },
+    //       error => { alert('erro ao atualizar' + error) }
+    //     )
+    //   } else {
+              
+    //     this.setProprietarios();
+    //   }
 
 
+
+
+    // } else {
+    //   alert('Campos invalidos');
+    // }
+ 
+       console.log(this.veiculoForm)
+       console.log(this.formulario.get('veiculo'))
+ 
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
 
-    
-    
+
+
     this.getMontadora();
     this.getPosto();
     this.getSetor();
     this.getCor();
-    this.proprietario = this.router.snapshot.data['proprietarios'];
-    this.createformulario();
-    
-  
 
+    
+    this.proprietario = this.router.snapshot.data['proprietarios'];
+
+    
+    
+    this.createformulario();
     this.veiculoForm = this.formulario.get('veiculo') as FormArray;
 
+    if (this.proprietario.id) {
+      this.getVeiculos(this.proprietario.id);
+      
+     } else {
+
+      this.veiculoForm.push(this.createVeiculo())
+
+     }
+
     
-    
+
+
+
   }
 
-  emailErro(){
-    
-    if(this.formulario.get('email').hasError('required')){
+  emailErro() {
+
+    if (this.formulario.get('email').hasError('required')) {
       return 'Digite seu email!'
     } else {
       return this.formulario.get('email').hasError('email') ? 'Email invalido!' : '';
     }
   }
-  nipErro(){
-    if(this.formulario.get('nip').hasError('required')){
+  nipErro() {
+    if (this.formulario.get('nip').hasError('required')) {
       return 'Digite seu NIP'
-    } 
+    }
   }
-  postoErro(){
-    if(this.formulario.get('posto').hasError('required')){
+  postoErro() {
+    if (this.formulario.get('posto').hasError('required')) {
       return 'É necessário selecionar o Posto/Grad'
-    } 
+    }
   }
 
-  incrementa(){
-   
-   
+  incrementa() {
+
     this.veiculoForm.push(this.createVeiculo());
-    
+
+
 
   }
-  createformulario(){
+  createformulario() {
 
     this.formulario = this.formBuilder.group({
       id: this.proprietario.id,
       cartao: [this.proprietario.cartao, Validators.required],
       nome: [this.proprietario.nome, Validators.required],
-      email:[this.proprietario.email, [Validators.required, Validators.email]],
-      nip:[this.proprietario.nip, Validators.required ],
+      email: [this.proprietario.email, [Validators.required, Validators.email]],
+      nip: [this.proprietario.nip, Validators.required],
       cnh: [this.proprietario.cnh, Validators.required],
-      veiculo: this.formBuilder.array([this.createVeiculo()]),
+      veiculo: this.formBuilder.array([]),
       idPosto: [this.proprietario.idPosto, Validators.required],
       idSetor: [this.proprietario.idSetor, Validators.required]
     });
 
 
   }
-  createVeiculo(): FormGroup{
+  createVeiculo(): FormGroup {
     return this.formBuilder.group({
       id: this.veiculos.id,
-      modelo:[this.veiculos.modelo, Validators.required],
-      ano:[this.veiculos.ano, Validators.required],
-      placa:[this.veiculos.placa, Validators.required],
-      chassi:[this.veiculos.chassi, Validators.required],
-      idMontadora:[this.veiculos.id, Validators.required],
+      modelo: [this.veiculos.modelo, Validators.required],
+      ano: [this.veiculos.ano, Validators.required],
+      placa: [this.veiculos.placa, Validators.required],
+      chassi: [this.veiculos.chassi, Validators.required],
+      idMontadora: [this.veiculos.id, Validators.required],
       idCor: [this.veiculos.idCor, Validators.required]
 
 
     });
   }
 
-  
 
 
 
-  setProprietarios(){
+  setProprietarios() {
     this.proprietario.id = this.formulario.get('id').value;
     this.proprietario.cartao = this.formulario.get('cartao').value
     this.proprietario.nome = this.formulario.get('nome').value
@@ -168,14 +194,21 @@ export class AddProprietariosComponent implements OnInit {
     this.proprietario.idPosto = this.formulario.get('idPosto').value
     this.proprietario.idSetor = this.formulario.get('idSetor').value
 
-    this.proprietariosService.adicionarProprietario(this.proprietario).subscribe();
 
+    this.proprietariosService.adicionarProprietario(this.proprietario).subscribe(success => {
+      alert('gravado com sucesso!')
+      this.route.navigate(['/proprietarios'])
+    },
+      error => alert(`Erro ao gravar os dados : ${error}`));
+    
+    this.setVeiculos()
   }
 
- 
-  setVeiculos(){
 
-      this.veiculoForm.controls.forEach(v => {
+  setVeiculos() {
+
+    this.veiculoForm.controls.forEach(v => {
+
       this.veiculos.id = v.get('id').value
       this.veiculos.modelo = v.get('modelo').value
       this.veiculos.ano = v.get('ano').value
@@ -183,39 +216,67 @@ export class AddProprietariosComponent implements OnInit {
       this.veiculos.chassi = v.get('chassi').value
       this.veiculos.idMontadora = v.get('idMontadora').value
       this.veiculos.idCor = v.get('idCor').value
-      this.veiculos.idProprietario = 1
       
+
+
       
-      this.veiculosService.adicionarVeiculos(this.veiculos)
-        .pipe(
-          take(1))
-        .subscribe(   success => {alert('gravado com sucesso!')
-                                this.route.navigate(['/proprietarios']) }, 
-                        error => alert(`Erro ao gravar os dados : ${error}`))
+     this.adicionarUsuario(this.veiculos)
 
     });
   }
 
-  getMontadora(){
+  getMontadora() {
 
     this.montadoraService.listarMontadora().subscribe((m: Montadora[]) => {
       this.montadoraLista = m
-    } );   
+    });
   }
-  
-  getPosto(){
+
+  getPosto() {
     this.postoService.listarPosto().subscribe((p: Posto[]) => {
       this.postoLista = p
     });
   }
-  getSetor(){
+  getSetor() {
     this.setorService.listarSetor().subscribe((s: Setor[]) => {
       this.setorLista = s
     });
   }
-  getCor(){
+  getCor() {
     this.corService.listarCor().subscribe((c: Cor[]) => {
       this.corLista = c
     });
   }
+  getVeiculos(id: number) {
+    this.veiculosService.listarVeiculos().subscribe(
+      (v: Veiculos[]) => {
+        v.map((veiculoId: Veiculos) => {
+          if (veiculoId.idProprietario == id) {
+
+            this.veiculos = veiculoId
+            this.veiculoForm.push(this.createVeiculo()) 
+          }
+        })
+      }
+    )
+  }
+  
+
+  adicionarUsuario(veiculo: Veiculos){
+
+
+    
+    const proprietarios$ = this.proprietariosService.ultimoId();
+    proprietarios$
+    .subscribe( p => {
+      
+      this.ultimoId(p)
+      this.veiculosService.adicionarVeiculos(veiculo).subscribe()
+    })
+  }
+
+  ultimoId(lista: Proprietarios[]){
+    this.veiculos.idProprietario = lista.length
+  }
+  
 }
