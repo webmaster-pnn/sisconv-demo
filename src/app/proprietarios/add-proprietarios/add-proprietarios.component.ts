@@ -184,7 +184,7 @@ export class AddProprietariosComponent implements OnInit {
       ano: [this.veiculos.ano, Validators.required],
       placa: [this.veiculos.placa, Validators.required],
       chassi: [this.veiculos.chassi, Validators.required],
-      idMontadora: [this.veiculos.id, Validators.required],
+      idMontadora: [this.veiculos.idMontadora, Validators.required],
       idCor: [this.veiculos.idCor, Validators.required]
 
 
@@ -263,12 +263,10 @@ export class AddProprietariosComponent implements OnInit {
   getVeiculos(id: number) {
     this.veiculosService.listarVeiculos().subscribe(
       (v: Veiculos[]) => {
-        v.map((veiculoId: Veiculos) => {
-          if (veiculoId.idProprietario == id) {
-            console.log(veiculoId)
-            this.veiculos = veiculoId
+        v.map((veiculo: Veiculos) => {
+          if (veiculo.idProprietario == id) {
+            this.veiculos = veiculo
             this.veiculoForm.push(this.createVeiculo()) 
-            console.log(this.veiculoForm)
           }
         })
       }
