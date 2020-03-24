@@ -7,16 +7,25 @@ import { AuthService } from './../../login/auth.service';
 import { Setor } from './../../model/setor';
 import { Posto } from './../../model/posto';
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { FormControl, Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormControl, Validators, FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
 import { Veiculos } from 'src/app/model/veiculos';
 import { Montadora } from 'src/app/model/montadora';
 import { MontadoraService } from 'src/app/service/montadora.service';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscriber, Subscription, timer } from 'rxjs';
 import { PostoService } from 'src/app/service/posto.service';
 import { SetorService } from 'src/app/service/setor.service';
 import { CorService } from 'src/app/service/cor.service';
-import { take, map, concatMap, switchMap } from 'rxjs/operators';
+import { take, map, concatMap, switchMap, exhaust, exhaustMap } from 'rxjs/operators';
+const p$ = new Subject<ProprietariosService>()
 
+const teste$ = Observable.create((observer) => {
+  observer.next('teste 1');
+  setTimeout(()=> observer.next('teste 2'), 2000)
+  setTimeout(()=> observer.complete(), 2000)
+}
+
+
+)
 @Component({
   selector: 'app-add-proprietarios',
   templateUrl: './add-proprietarios.component.html',
@@ -42,7 +51,7 @@ export class AddProprietariosComponent implements OnInit {
   veiculos: Veiculos = new Veiculos();
 
   proprietarioLista: Proprietarios[];
-  veiculoLista: Veiculos[];
+  veiculoLista = [];
   montadoraLista: Montadora[];
   setorLista: Setor[];
   postoLista: Posto[];
@@ -85,9 +94,11 @@ export class AddProprietariosComponent implements OnInit {
     // } else {
     //   alert('Campos invalidos');
     // }
- 
-       console.log(this.veiculoForm)
-       console.log(this.formulario.get('veiculo'))
+      // this.setVeiculos(this.veiculos, this.proprietariosService, this.veiculosService)
+      this.setProprietarios()
+      // this.setVeiculos()
+      //  console.log(this.veiculoLista)
+      //  console.log(this.formulario.get('veiculo'))
  
 
   }
@@ -100,8 +111,8 @@ export class AddProprietariosComponent implements OnInit {
     this.getPosto();
     this.getSetor();
     this.getCor();
-
-    
+    // timer(1000).subscribe(v => console.log(v++))
+    // teste$.subscribe(data => console.log(data))
     this.proprietario = this.router.snapshot.data['proprietarios'];
 
     
@@ -194,35 +205,36 @@ export class AddProprietariosComponent implements OnInit {
     this.proprietario.idPosto = this.formulario.get('idPosto').value
     this.proprietario.idSetor = this.formulario.get('idSetor').value
 
-
-    this.proprietariosService.adicionarProprietario(this.proprietario).subscribe(success => {
-      alert('gravado com sucesso!')
-      this.route.navigate(['/proprietarios'])
-    },
-      error => alert(`Erro ao gravar os dados : ${error}`));
-    
-    this.setVeiculos()
+    this.proprietariosService.adicionarProprietario(this.proprietario).subscribe()
+    setTimeout(()=>this.setVeiculos(),2000)
+    // this.proprietariosService.adicionarProprietario(this.proprietario).subscribe(success => {
+    //   alert('gravado com sucesso!')
+    //   this.route.navigate(['/proprietarios'])
+    // },
+    //   error => alert(`Erro ao gravar os dados : ${error}`));
+   
+      // this.setVeiculos(this.veiculos, this.proprietariosService, this.veiculosService)
   }
 
 
   setVeiculos() {
 
-    this.veiculoForm.controls.forEach(v => {
+    this.proprietariosService.ultimoId()
+      .subscribe( p => {
+        this.veiculoForm.controls.forEach(v => {
+          console.log('adicionando')
+            this.adiciona(v) 
+          console.log('buscando id')
+            
+          this.ultimoId(p)
+          console.log('salvando veiculos')
+        
+        this.veiculosService.adicionarVeiculos(this.veiculos).subscribe()
+          console.log('termino')
+      })});
 
-      this.veiculos.id = v.get('id').value
-      this.veiculos.modelo = v.get('modelo').value
-      this.veiculos.ano = v.get('ano').value
-      this.veiculos.placa = v.get('placa').value
-      this.veiculos.chassi = v.get('chassi').value
-      this.veiculos.idMontadora = v.get('idMontadora').value
-      this.veiculos.idCor = v.get('idCor').value
-      
-
-
-      
-     this.adicionarUsuario(this.veiculos)
-
-    });
+    
+    
   }
 
   getMontadora() {
@@ -247,14 +259,16 @@ export class AddProprietariosComponent implements OnInit {
       this.corLista = c
     });
   }
+
   getVeiculos(id: number) {
     this.veiculosService.listarVeiculos().subscribe(
       (v: Veiculos[]) => {
         v.map((veiculoId: Veiculos) => {
           if (veiculoId.idProprietario == id) {
-
+            console.log(veiculoId)
             this.veiculos = veiculoId
             this.veiculoForm.push(this.createVeiculo()) 
+            console.log(this.veiculoForm)
           }
         })
       }
@@ -278,5 +292,23 @@ export class AddProprietariosComponent implements OnInit {
   ultimoId(lista: Proprietarios[]){
     this.veiculos.idProprietario = lista.length
   }
-  
+  adicionarVeiculo(lista){
+    this.veiculoLista = lista
+  }
+
+  adiciona(v: AbstractControl){
+
+     this.veiculos.id = v.get('id').value
+      this.veiculos.modelo = v.get('modelo').value
+      this.veiculos.ano = v.get('ano').value
+      this.veiculos.placa = v.get('placa').value
+      this.veiculos.chassi = v.get('chassi').value
+      this.veiculos.idMontadora = v.get('idMontadora').value
+      this.veiculos.idCor = v.get('idCor').value
+       
+   
+
+
+
+  }
 }
