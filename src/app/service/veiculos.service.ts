@@ -26,19 +26,20 @@ export class VeiculosService {
   constructor(private http: HttpClient) { }
 
   // métodos
+  private atualizarVeiculos(v) {
+    return this.http.put<Veiculos>(`${this.API}/${v.id}`, v).pipe(take(1));
+  }
+  private adicionarVeiculos(v): Observable<Veiculos> {
+
+    return this.http.post<Veiculos>(this.API, JSON.stringify(v), httpOptions);
+  }
+  private extractData(res: Response) {
+    return res || {}; // If 'res' is null, it returns empty object
+  }
 
   listarVeiculos() {
     return this.http.get(this.API, httpOptions).pipe(
       map(this.extractData));
-  }
-
-
-  atualizarVeiculos(v) {
-    return this.http.put<Veiculos>(`${this.API}/${v.id}`, v).pipe(take(1));
-  }
-  adicionarVeiculos(v): Observable<Veiculos> {
-
-    return this.http.post<Veiculos>(this.API, JSON.stringify(v), httpOptions);
   }
 
   salvarVeiculos(veiculo) {
@@ -48,9 +49,9 @@ export class VeiculosService {
       return this.atualizarVeiculos(veiculo)
     }
   }
-
-  private extractData(res: Response) {
-    return res || {}; // If 'res' is null, it returns empty object
+  removerVeiculo(id){
+    return this.http.delete(`${this.API}/${id}`).pipe(take(1));
   }
+  
 
 }

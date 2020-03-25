@@ -8,12 +8,15 @@ import {MatSort} from '@angular/material/sort';
 import { VeiculoServicoService } from 'src/app/veiculos/veiculo-servico.service';
 import { ProprietariosService } from 'src/app/service/proprietarios.service';
 import { Proprietarios } from 'src/app/model/proprietarios';
-import { take } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
 import { PostoService } from 'src/app/service/posto.service';
 import { Posto } from 'src/app/model/posto';
 import { Setor } from 'src/app/model/setor';
 import { SetorService } from 'src/app/service/setor.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { VeiculosService } from 'src/app/service/veiculos.service';
+import { Veiculos } from 'src/app/model/veiculos';
+import { Observable } from 'rxjs';
 
 
 
@@ -34,7 +37,7 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
   tabela_vazia: boolean = false;
 
   // colunas da tabela
-  displayedColumns: string[] = ['posto', 'nome', 'nip', 'setor','cnh', 'editar'];
+  displayedColumns: string[] = ['posto', 'nome', 'nip', 'setor','cnh', 'editar', 'remover'];
  
   // criando um novo objeto da tabela data source e passando o proprietario como parametro
   dataSource: MatTableDataSource<Proprietarios>;
@@ -56,9 +59,11 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
 
   constructor(
     private proprietarioService: ProprietariosService,
+    private veiculosService: VeiculosService,
     private postoService: PostoService,
     private setorService: SetorService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) { 
   
     // herdando objetos da classe pai e utilizando para alterar elementos do paginator
@@ -101,7 +106,9 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
 
   getProprietarios(){
     const proprietario$ = this.proprietarioService.listarProprietario();
-    proprietario$.subscribe((p: Proprietarios []) => {
+    proprietario$
+    .pipe(delay(2000))
+    .subscribe((p: Proprietarios []) => {
 
       p.forEach(data => {
       
@@ -133,8 +140,41 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
       
   }
 
-  
-    
+  teste(id){
+    const remover$ = new Observable(dados =>{
+      dados.next(this.removerVeiculos(id))
+
+      setTimeout(()=> {
+        console.log('removendo proprietarios')
+
+        dados.next(this.proprietarioService.removerProprietario(id).subscribe())
+      }, 2000)
+      
+      dados.complete()
+    });
+
+    remover$.subscribe(success => {
+      this.getProprietarios()
+      alert('Proprietario removido com sucesso!')
+       
+      
+    },
+      error => alert(`Erro ao remover Proprietario : ${error}`));
+  }
+
+  private removerVeiculos(id){
+   
+    this.veiculosService.listarVeiculos().subscribe(
+      (v: Veiculos[]) => {
+        v.map((veiculo: Veiculos) => {
+          if (veiculo.idProprietario == id) {
+            console.log('removendo veiculos')
+           this.veiculosService.removerVeiculo(veiculo.id).subscribe()
+          }
+        })
+      }
+    )
+   }  
  
 
 }

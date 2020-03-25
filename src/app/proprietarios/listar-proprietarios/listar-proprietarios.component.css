@@ -46,13 +46,19 @@ table{
 #tab_vazia h4{
     text-align: center;    
 }
-#editar_titulo, #editar_conteudo{
+#editar_titulo, #editar_conteudo, #remover_titulo, #remover_conteudo{
     text-align: center;
 }
 #editar_conteudo a:hover{
     color: blue;
     cursor: pointer;
+    font-size: 18;
 }
-#editar_conteudo a{
+#editar_conteudo a, #remover_conteudo a{
     color: #333333;
+}
+#remover_conteudo a:hover{
+    color: red;
+    cursor: pointer;
+    font-size: 18;
 }

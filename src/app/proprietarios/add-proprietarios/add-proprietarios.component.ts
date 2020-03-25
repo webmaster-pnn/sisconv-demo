@@ -239,7 +239,6 @@ export class AddProprietariosComponent implements OnInit {
         v.map((veiculo: Veiculos) => {
           if (veiculo.idProprietario == id) {
             this.veiculos = veiculo
-            this.veiculoLista.push(this.veiculos)
             this.veiculoForm.push(this.createVeiculo()) 
           }
         })
@@ -248,25 +247,12 @@ export class AddProprietariosComponent implements OnInit {
   }
   
 
-  adicionarUsuario(veiculo: Veiculos){
-
-
-    
-    const proprietarios$ = this.proprietariosService.ultimoId();
-    proprietarios$
-    .subscribe( p => {
-      
-      this.ultimoId(p)
-      this.veiculosService.adicionarVeiculos(veiculo).subscribe()
-    })
-  }
+  
 
   ultimoId(lista: Proprietarios[]){
     this.veiculos.idProprietario = lista.length
   }
-  adicionarVeiculo(lista){
-    this.veiculoLista = lista
-  }
+
 
   adiciona(v: AbstractControl){
 
@@ -284,7 +270,7 @@ export class AddProprietariosComponent implements OnInit {
 
       dados.next(this.setProprietarios())
       if (this.veiculos.idProprietario == null){
-        setTimeout(()=>dados.next(
+        setTimeout(dados.next(
           this.proprietariosService.ultimoId()
               .subscribe( p => {
                 this.ultimoId(p)

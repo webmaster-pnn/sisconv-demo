@@ -37,31 +37,32 @@ export class ProprietariosService {
 
 
 
-  adicionarProprietario(p): Observable<Proprietarios> {
+  private adicionarProprietario(p): Observable<Proprietarios> {
 
     return this.http.post<Proprietarios>(this.API, JSON.stringify(p), httpOptions)
       .pipe(take(1))
   }
 
-  atualizarProprietario(p) {
+  private atualizarProprietario(p) {
     return this.http.put<Proprietarios>(`${this.API}/${p.id}`, p)
   }
+
+  private extractData(res: Response) {
+    return res || {}; // If 'res' is null, it returns empty object
+  }
+
+
 
   listarProprietario(): Observable<any> {
     return this.http.get(this.API, httpOptions).pipe(
       map(this.extractData));
   }
-  ultimoId(): Observable<Proprietarios[]> {
 
-    return this.http.get<Proprietarios[]>(this.API);
-
-
-
-  }
 
   listarProprietarioId(id) {
     return this.http.get<Proprietarios>(`${this.API}/${id}`).pipe(take(1));
   }
+
 
   salvarProprietario(proprietario) {
     if (proprietario.id == null){
@@ -71,18 +72,25 @@ export class ProprietariosService {
     }
   }
 
-
-
-
-
-
-
-
-
-
-  private extractData(res: Response) {
-    return res || {}; // If 'res' is null, it returns empty object
+  removerProprietario(id){
+    return this.http.delete(`${this.API}/${id}`).pipe(take(1));
   }
+  ultimoId(): Observable<Proprietarios[]> {
+
+    return this.http.get<Proprietarios[]>(this.API);
+
+
+
+  }
+
+
+
+
+
+
+
+
+  
 
 
 }

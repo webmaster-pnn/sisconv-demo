@@ -2,118 +2,25 @@
   "proprietarios": [
     {
       "id": 1,
-      "cartao": "001",
+      "cartao": "021",
       "nome": "Carlos Henrique Pereira Machado Júnior",
-      "email": "machadopnn@gmail.com",
+      "email": "machado.henrique@marinha.mil.br",
       "nip": "16115597",
-      "cnh": "06987439947",
+      "cnh": "26554455455",
       "status": true,
       "idPosto": 1,
       "idSetor": 1
-    },
-    {
-      "id": 2,
-      "cartao": "024",
-      "nome": "Andre Luiz Moreira Vieira",
-      "email": "moreira.vieira@marinha.mil.br",
-      "nip": "01010051",
-      "cnh": "00000000000",
-      "status": true,
-      "idPosto": 4,
-      "idSetor": 1
-    },
-    {
-      "id": 3,
-      "cartao": "023",
-      "nome": "Joao Henrique Carolino",
-      "email": "henrique.carolino@marinha.mil.br",
-      "nip": "86544456",
-      "cnh": "11111111111",
-      "status": true,
-      "idPosto": 6,
-      "idSetor": 1
-    },
-    {
-      "id": 4,
-      "cartao": "022",
-      "nome": "Ruan aprigio M Martins",
-      "email": "webmaster@marinha.mil.br",
-      "nip": "16115597",
-      "cnh": "06987439947",
-      "status": true,
-      "idPosto": 3,
-      "idSetor": 2
     }
   ],
   "veiculos": [
     {
+      "idProprietario": 1,
       "id": 1,
-      "modelo": "eeee",
+      "modelo": "Passat Alemão",
       "ano": "1999",
-      "placa": "CXZ-4402",
-      "chassi": "123456789ABCDEFGH",
+      "placa": "KKL-5585",
+      "chassi": "JAD54ASD4ADS4DAS54D",
       "idMontadora": 1,
-      "idCor": 2,
-      "idProprietario": 1
-    },
-    {
-      "id": 2,
-      "modelo": "Mobi",
-      "ano": "2018",
-      "placa": "VVV-2424",
-      "chassi": "0923SSSSDJDASDS",
-      "idMontadora": 4,
-      "idCor": 7,
-      "idProprietario": 2
-    },
-    {
-      "id": 3,
-      "modelo": "Fiesta",
-      "ano": "2020",
-      "placa": "DKD-2020",
-      "chassi": "SKSKD292929SKSK",
-      "idMontadora": 2,
-      "idCor": 2,
-      "idProprietario": 2
-    },
-    {
-      "id": 4,
-      "modelo": "uno",
-      "ano": "2022",
-      "placa": "PPP-5544",
-      "chassi": "CKASJDJD999009",
-      "idMontadora": 4,
-      "idCor": 3,
-      "idProprietario": 3
-    },
-    {
-      "id": 5,
-      "modelo": "Gol",
-      "ano": "2014",
-      "placa": "AKD-8855",
-      "chassi": "KD5DL4DL522",
-      "idMontadora": 1,
-      "idCor": 4,
-      "idProprietario": 3
-    },
-    {
-      "id": 6,
-      "modelo": "Polo",
-      "ano": "2010",
-      "placa": "PPS-5522",
-      "chassi": "CKSKFF55522",
-      "idMontadora": 1,
-      "idCor": 5,
-      "idProprietario": 3
-    },
-    {
-      "idProprietario": 4,
-      "id": 7,
-      "modelo": "Fuzion",
-      "ano": "2020",
-      "placa": "PPP-0000",
-      "chassi": "DJSK0SJD0DJDJJ",
-      "idMontadora": 2,
       "idCor": 2
     }
   ],
