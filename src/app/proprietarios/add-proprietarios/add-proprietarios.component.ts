@@ -38,6 +38,7 @@ export class AddProprietariosComponent implements OnInit {
   proprietario: Proprietarios = new Proprietarios();
   veiculos: Veiculos = new Veiculos();
 
+  submit = 'Cadastrar'
   proprietarioLista: Proprietarios[];
   veiculoLista = [];
   montadoraLista: Montadora[];
@@ -82,6 +83,10 @@ export class AddProprietariosComponent implements OnInit {
     // timer(1000).subscribe(v => console.log(v++))
     // teste$.subscribe(data => console.log(data))
     this.proprietario = this.router.snapshot.data['proprietarios'];
+
+    if (this.proprietario.id != null){
+      this.submit = 'Atualizar'
+    }
 
     
     

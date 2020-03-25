@@ -10,7 +10,6 @@
           </ol>
       </nav> -->
     <section>
-{{ id }}
         <form [formGroup]="formulario" (ngSubmit) = "onSubmit()">
             <div>
 
@@ -116,7 +115,7 @@
                     <hr *ngIf="formulario.value.veiculo.length !== 1">
                 </div>
                 <br>
-                <button mat-raised-button color="primary" type="submit">Cadastrar</button>  
+                <button mat-raised-button color="primary" type="submit">{{submit}}</button>  
             </div>
             
             
