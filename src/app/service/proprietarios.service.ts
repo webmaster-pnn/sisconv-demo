@@ -43,28 +43,32 @@ export class ProprietariosService {
       .pipe(take(1))
   }
 
-   atualizarProprietario( p ){
-    return this.http.put<Proprietarios>(`${this.API}/${p.id}`, p).pipe(take(1))
+  atualizarProprietario(p) {
+    return this.http.put<Proprietarios>(`${this.API}/${p.id}`, p)
   }
 
   listarProprietario(): Observable<any> {
     return this.http.get(this.API, httpOptions).pipe(
       map(this.extractData));
   }
-  ultimoId(): Observable<Proprietarios[]>{
-    
-    return this.http.get<Proprietarios[]>(this.API);
-     
+  ultimoId(): Observable<Proprietarios[]> {
 
-      
+    return this.http.get<Proprietarios[]>(this.API);
+
+
+
   }
 
   listarProprietarioId(id) {
     return this.http.get<Proprietarios>(`${this.API}/${id}`).pipe(take(1));
   }
 
-  salvarProprietario( proprietario ){
-
+  salvarProprietario(proprietario) {
+    if (proprietario.id == null){
+      return this.adicionarProprietario(proprietario)
+    } else {
+      return this.atualizarProprietario(proprietario)
+    }
   }
 
 
