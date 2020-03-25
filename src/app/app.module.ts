@@ -17,6 +17,10 @@ import { AuthService } from './login/auth.service';
 import { CartoesModule } from './cartoes/cartoes.module';
 import { ProprietariosGuard } from './proprietarios/proprietarios.guard';
 
+// ngx bootstrap
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { SharedModule } from './shared/shared.module';
+
 @NgModule({
   declarations: [ 
     AppComponent,
@@ -32,6 +36,11 @@ import { ProprietariosGuard } from './proprietarios/proprietarios.guard';
     HttpClientModule,
     AngularSvgIconModule,
     BrowserAnimationsModule,
+
+    SharedModule,
+    ModalModule.forRoot()
+
+    
   ],
   providers: [
     AuthService,

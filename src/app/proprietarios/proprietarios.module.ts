@@ -42,7 +42,7 @@ import { ListarProprietariosComponent } from './listar-proprietarios/listar-prop
     MatSortModule,
     MatPaginatorModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [
     {provide: 

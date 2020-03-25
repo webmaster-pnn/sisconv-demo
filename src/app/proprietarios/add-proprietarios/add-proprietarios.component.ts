@@ -21,6 +21,8 @@ import { SetorService } from 'src/app/service/setor.service';
 import { CorService } from 'src/app/service/cor.service';
 import { VeiculosService } from './../../service/veiculos.service';
 import { ProprietariosService } from 'src/app/service/proprietarios.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
 
 
 @Component({
@@ -46,6 +48,8 @@ export class AddProprietariosComponent implements OnInit {
   postoLista: Posto[];
   corLista: Cor[];
 
+  bsModalRef: BsModalRef; 
+
   constructor(
     private formBuilder: FormBuilder,
     private veiculosService: VeiculosService,
@@ -55,7 +59,8 @@ export class AddProprietariosComponent implements OnInit {
     private setorService: SetorService,
     private corService: CorService,
     private route: Router,
-    private router: ActivatedRoute
+    private router: ActivatedRoute,
+    private modalService: BsModalService
 
 
   ) { }
@@ -65,7 +70,7 @@ export class AddProprietariosComponent implements OnInit {
             this.atualizarDados();
           
     } else {
-      alert('Campos invalidos');
+      this.modal('Campos invalidos', 'danger');
     }
      
  
@@ -194,7 +199,14 @@ export class AddProprietariosComponent implements OnInit {
     this.proprietario.idPosto = this.formulario.get('idPosto').value
     this.proprietario.idSetor = this.formulario.get('idSetor').value
 
-    this.proprietariosService.salvarProprietario(this.proprietario).subscribe();
+    this.proprietariosService.salvarProprietario(this.proprietario).subscribe(success => {
+      if(status){
+        this.modal('Dados atualizados com sucesso!', 'success');
+      } else {
+        this.modal('Dados salvos com sucesso!', 'success');
+      }
+    } ,  error => this.modal(`Erro ao gravar os dados : ${error}`, 'danger')
+);
    
 
   }
@@ -204,7 +216,13 @@ export class AddProprietariosComponent implements OnInit {
     
       this.veiculoForm.controls.forEach(v => {
           this.adiciona(v) 
-          this.veiculosService.salvarVeiculos(this.veiculos).subscribe()
+          this.veiculosService.salvarVeiculos(this.veiculos).subscribe( error => {
+            if(status){
+              this.modal(`Erro ao atualizar os dados : ${error}`, 'danger')
+            } else {
+              this.modal(`Erro ao gravar os dados : ${error}`, 'danger')
+            }
+          })
     })
     
     
@@ -266,6 +284,10 @@ export class AddProprietariosComponent implements OnInit {
   }
 
   atualizarDados(){
+    let status: boolean = false;
+    if(this.proprietario.id != null){
+      status = true;
+    }
     const dados$ = new Observable(dados=>{
 
       dados.next(this.setProprietarios())
@@ -274,8 +296,8 @@ export class AddProprietariosComponent implements OnInit {
           this.proprietariosService.ultimoId()
               .subscribe( p => {
                 this.ultimoId(p)
-                dados.next(this.setVeiculos()) 
-
+                dados.next(this.setVeiculos())
+                
               })
         ), 2000) } else {
         dados.next(this.setVeiculos()) 
@@ -284,9 +306,14 @@ export class AddProprietariosComponent implements OnInit {
       dados.complete()
     });
     dados$.subscribe(success => {
-      alert('gravado com sucesso!')
       this.route.navigate(['/proprietarios'])
-    },
-      error => alert(`Erro ao gravar os dados : ${error}`));
+    });
+  }
+
+  private modal(mensagem, tipo){
+    this.bsModalRef = this.modalService.show(AlertModalComponent);
+    this.bsModalRef.content.tipo = tipo;
+    this.bsModalRef.content.mensagem = mensagem;
+    
   }
 }

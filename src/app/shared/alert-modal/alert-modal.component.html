@@ -1,1 +1,6 @@
-<p>alert-modal works!</p>
+<div class=" alert alert-{{ tipo }}" id="modal" role="alert">
+    {{ mensagem }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="fechar()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>

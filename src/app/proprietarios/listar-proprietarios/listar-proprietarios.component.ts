@@ -17,6 +17,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VeiculosService } from 'src/app/service/veiculos.service';
 import { Veiculos } from 'src/app/model/veiculos';
 import { Observable } from 'rxjs';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
 
 
 
@@ -35,7 +37,7 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
  
   // variaveis
   tabela_vazia: boolean = false;
-
+  bsModalRef: BsModalRef;
   // colunas da tabela
   displayedColumns: string[] = ['posto', 'nome', 'nip', 'setor','cnh', 'editar', 'remover'];
  
@@ -63,7 +65,8 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
     private postoService: PostoService,
     private setorService: SetorService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalService: BsModalService
     ) { 
   
     // herdando objetos da classe pai e utilizando para alterar elementos do paginator
@@ -136,7 +139,7 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
       return p;
             
     }, 
-    error => alert(`Erro ao buscar os dados : ${error}`));  
+    error => this.modal(`Erro ao buscar os dados : ${error}`, 'danger'));  
       
   }
 
@@ -145,7 +148,6 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
       dados.next(this.removerVeiculos(id))
 
       setTimeout(()=> {
-        console.log('removendo proprietarios')
 
         dados.next(this.proprietarioService.removerProprietario(id).subscribe())
       }, 2000)
@@ -155,11 +157,17 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
 
     remover$.subscribe(success => {
       this.getProprietarios()
-      alert('Proprietario removido com sucesso!')
+      this.modal('Proprietario removido com sucesso!', 'success')
        
       
     },
-      error => alert(`Erro ao remover Proprietario : ${error}`));
+      error => this.modal(`Erro ao remover Proprietario : ${error}`, 'danger'));
+  }
+  private modal(mensagem, tipo){
+    this.bsModalRef = this.modalService.show(AlertModalComponent);
+    this.bsModalRef.content.tipo = tipo;
+    this.bsModalRef.content.mensagem = mensagem;
+    
   }
 
   private removerVeiculos(id){
