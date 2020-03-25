@@ -17,12 +17,11 @@ import { AuthService } from './login/auth.service';
 import { CartoesModule } from './cartoes/cartoes.module';
 import { ProprietariosGuard } from './proprietarios/proprietarios.guard';
 
-
 @NgModule({
   declarations: [ 
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     VeiculosModule,

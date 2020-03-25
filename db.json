@@ -10,6 +10,17 @@
       "status": true,
       "idPosto": 1,
       "idSetor": 1
+    },
+    {
+      "id": 2,
+      "cartao": "002",
+      "nome": "Andre Luiz Moreira Vieira",
+      "email": "moreira.vieira@marinha.mil.br",
+      "nip": "01010051",
+      "cnh": "12141214121",
+      "status": true,
+      "idPosto": 4,
+      "idSetor": 1
     }
   ],
   "veiculos": [
@@ -22,6 +33,16 @@
       "chassi": "JAD54ASD4ADS4DAS54D",
       "idMontadora": 1,
       "idCor": 2
+    },
+    {
+      "idProprietario": 2,
+      "id": 2,
+      "modelo": "Mobi",
+      "ano": "2029",
+      "placa": "SOD-2020",
+      "chassi": "SKDS120SKD02",
+      "idMontadora": 4,
+      "idCor": 4
     }
   ],
   "montadora": [

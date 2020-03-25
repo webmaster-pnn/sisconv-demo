@@ -270,7 +270,7 @@ export class AddProprietariosComponent implements OnInit {
 
       dados.next(this.setProprietarios())
       if (this.veiculos.idProprietario == null){
-        setTimeout(dados.next(
+        setTimeout(() => dados.next(
           this.proprietariosService.ultimoId()
               .subscribe( p => {
                 this.ultimoId(p)
