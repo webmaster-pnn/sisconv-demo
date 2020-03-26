@@ -206,6 +206,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+ngx-bootstrap/component-loader
+
+ngx-bootstrap/modal
+
+ngx-bootstrap/positioning
+
+ngx-bootstrap/utils
+
 ngx-mask
 MIT
 MIT License
@@ -230,6 +238,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+ngx-spinner
+MIT
 
 regenerator-runtime
 MIT
