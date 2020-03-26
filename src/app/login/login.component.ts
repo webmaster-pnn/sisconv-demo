@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   
   fazerLogin(){
     this.auth.login(this.usuario);
+    
   }
 
 

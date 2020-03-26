@@ -24,24 +24,13 @@
     },
     {
       "id": 3,
-      "cartao": "001",
-      "nome": "Carlos Henrique Pereira Machado Júnior",
-      "email": "machadopnn@gmail.com",
-      "nip": "16115597",
-      "cnh": "16116161616",
+      "cartao": "099",
+      "nome": "Karolina Caria dos santos",
+      "email": "karol@gmail.com",
+      "nip": "00000000",
+      "cnh": "29332392939",
       "status": true,
-      "idPosto": 1,
-      "idSetor": 2
-    },
-    {
-      "id": 4,
-      "cartao": "001",
-      "nome": "Carlos Henrique Pereira Machado Júnior",
-      "email": "machadopnn@gmail.com",
-      "nip": "16115597",
-      "cnh": "16116161616",
-      "status": true,
-      "idPosto": 1,
+      "idPosto": 6,
       "idSetor": 2
     }
   ],
@@ -69,22 +58,22 @@
     {
       "idProprietario": 3,
       "id": 3,
-      "modelo": "Doblo",
-      "ano": "2012",
-      "placa": "CXZ-4402",
-      "chassi": "123456789ABCDEFGH",
+      "modelo": "siena",
+      "ano": "2020",
+      "placa": "KSK-2030",
+      "chassi": "AKDDS20293DASK",
       "idMontadora": 4,
-      "idCor": 2
+      "idCor": 4
     },
     {
-      "idProprietario": 4,
+      "idProprietario": 3,
       "id": 4,
-      "modelo": "Doblo",
-      "ano": "2012",
-      "placa": "CXZ-4402",
-      "chassi": "123456789ABCDEFGH",
-      "idMontadora": 4,
-      "idCor": 2
+      "modelo": "hb20",
+      "ano": "2020",
+      "placa": "ASD-2020",
+      "chassi": "ASDKDSAOK2023",
+      "idMontadora": 2,
+      "idCor": 4
     }
   ],
   "montadora": [

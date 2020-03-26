@@ -1,5 +1,5 @@
   
- <body [ngClass]="{'login': !autenticacao}">
+ <body [ngClass]="{'login': !autenticacao}" *ngIf="exibir">
   <!-- -->
   <nav class="navbar navbar-expand-lg navbar-light  bg-dark"  id="navbar" *ngIf="autenticacao" >
     
@@ -93,7 +93,7 @@
 
 
 <div class="conteudo">
-    <router-outlet></router-outlet>
+    <router-outlet ></router-outlet>
 
 </div>
    <!-- <app-proprietarios></app-proprietarios> -->
@@ -112,3 +112,13 @@
   </footer>
 
 </body>
+<ngx-spinner
+bdOpacity = 0.2
+bdColor = "000000"
+size = "medium"
+color = "#fff"
+type = "ball-spin-clockwise"
+[fullScreen] = "true"
+>
+<p style="color: white" > Loading... </p>
+</ngx-spinner>

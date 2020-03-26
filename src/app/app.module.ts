@@ -16,7 +16,8 @@ import { HomeComponent } from './home/home.component';
 import { AuthService } from './login/auth.service';
 import { CartoesModule } from './cartoes/cartoes.module';
 import { ProprietariosGuard } from './proprietarios/proprietarios.guard';
-
+// ngx spinner
+import { NgxSpinnerModule } from "ngx-spinner";
 // ngx bootstrap
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SharedModule } from './shared/shared.module';
@@ -36,7 +37,7 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     AngularSvgIconModule,
     BrowserAnimationsModule,
-
+    NgxSpinnerModule,
     SharedModule,
     ModalModule.forRoot()
 

@@ -1,4 +1,4 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable, Output, EventEmitter, Component } from '@angular/core';
 import { Usuario } from '../model/usuario';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ export class AuthService {
  
   
   autenticar =new EventEmitter<boolean>();
+  exibir = new EventEmitter<boolean>();
   private usuarioAutenticado: boolean = false;
 
   constructor(private router: Router) { 
@@ -25,7 +26,9 @@ export class AuthService {
 
       this.autenticar.emit(true);
       this.usuarioAutenticado = true;
+      
       this.router.navigate(['/home']);
+     
       
     } else{
       
@@ -39,6 +42,13 @@ export class AuthService {
   
   getAuth(){
     return this.usuarioAutenticado;
+  }
+  componente(v){
+    if(v){
+      this.exibir.emit(true);
+    } else {
+      this.exibir.emit(false);
+    }
   }
   
 }

@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { AuthService } from './login/auth.service';
+import { EEXIST } from 'constants';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -10,25 +12,41 @@ import { AuthService } from './login/auth.service';
 export class AppComponent {
   title = 'SisConV';
   autenticacao: boolean = false;
- 
+  exibir: boolean = true;
+
   logout(){
     this.autenticacao = false;
   }
   
-  constructor(private logar: AuthService, private router: Router){
-    
-  }
+  constructor(private logar: AuthService, 
+              private spinner: NgxSpinnerService, 
+              private router: Router
+              ){}
 
   ngOnInit(){
     this.logar.autenticar.subscribe(
-      autenticando => this.autenticacao = autenticando
+      autenticando => {
+        this.autenticacao = autenticando
+        if(autenticando){
+          this.ocultar();
+        }
+      }
     );
-    
+    // this.logar.exibir.subscribe(e => this.exibir = e);
       
     
     
     
   }
+ocultar(){
+         this.exibir = false
+          this.spinner.show();
+          setTimeout(()=> {
+            this.spinner.hide();
+          }, 5000);
+          setTimeout(()=> this.exibir = true, 5000);
+}
+    
 }
 
 
