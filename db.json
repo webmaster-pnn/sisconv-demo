@@ -43,6 +43,16 @@
       "chassi": "bora",
       "idMontadora": 1,
       "idCor": 5
+    },
+    {
+      "idProprietario": 1,
+      "id": 3,
+      "modelo": "carro 3",
+      "ano": "ADS1ASD1DAW",
+      "placa": "JAD54ASD4ADS4DAS54D",
+      "chassi": "carr",
+      "idMontadora": 1,
+      "idCor": 2
     }
   ],
   "montadora": [

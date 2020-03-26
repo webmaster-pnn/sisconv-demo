@@ -79,7 +79,7 @@ export class AddProprietariosComponent implements OnInit {
 
   ngOnInit() {
 
-
+    this.veiculoForm = new FormArray([]);
 
     this.getMontadora();
     this.getPosto();
@@ -96,6 +96,7 @@ export class AddProprietariosComponent implements OnInit {
     
     
     this.createformulario();
+    
     this.veiculoForm = this.formulario.get('veiculo') as FormArray;
 
     if (this.proprietario.id) {
@@ -106,8 +107,10 @@ export class AddProprietariosComponent implements OnInit {
       this.veiculoForm.push(this.createVeiculo())
 
      }
-
     
+    console.log(this.veiculoForm)
+    console.log(this.formulario)
+    console.log(this.formulario.get('veiculo'))
 
 
 
@@ -156,7 +159,7 @@ export class AddProprietariosComponent implements OnInit {
 
   }
   createformulario() {
-
+    
     this.formulario = this.formBuilder.group({
       id: this.proprietario.id,
       cartao: [this.proprietario.cartao, Validators.required],
@@ -164,7 +167,7 @@ export class AddProprietariosComponent implements OnInit {
       email: [this.proprietario.email, [Validators.required, Validators.email]],
       nip: [this.proprietario.nip, Validators.required],
       cnh: [this.proprietario.cnh, Validators.required],
-      veiculo: this.formBuilder.array([]),
+      veiculo: this.veiculoForm,
       idPosto: [this.proprietario.idPosto, Validators.required],
       idSetor: [this.proprietario.idSetor, Validators.required]
     });
@@ -188,7 +191,9 @@ export class AddProprietariosComponent implements OnInit {
 
 
 
+
     setProprietarios() {
+    
     this.proprietario.id = this.formulario.get('id').value;
     this.proprietario.cartao = this.formulario.get('cartao').value
     this.proprietario.nome = this.formulario.get('nome').value
@@ -213,7 +218,7 @@ export class AddProprietariosComponent implements OnInit {
 
 
   setVeiculos() {
-    
+      
       this.veiculoForm.controls.forEach(v => {
           this.adiciona(v) 
           this.veiculosService.salvarVeiculos(this.veiculos).subscribe( error => {

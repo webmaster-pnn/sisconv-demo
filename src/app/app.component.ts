@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { AuthService } from './login/auth.service';
-import { EEXIST } from 'constants';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
