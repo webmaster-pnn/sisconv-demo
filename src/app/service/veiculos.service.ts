@@ -31,7 +31,7 @@ export class VeiculosService {
   }
   private adicionarVeiculos(v): Observable<Veiculos> {
 
-    return this.http.post<Veiculos>(this.API, JSON.stringify(v), httpOptions);
+    return this.http.post<Veiculos>(this.API, JSON.stringify(v), httpOptions).pipe(take(1));
   }
   private extractData(res: Response) {
     return res || {}; // If 'res' is null, it returns empty object
@@ -39,7 +39,8 @@ export class VeiculosService {
 
   listarVeiculos() {
     return this.http.get(this.API, httpOptions).pipe(
-      map(this.extractData));
+      map(this.extractData),
+      take(1));
   }
 
   salvarVeiculos(veiculo) {

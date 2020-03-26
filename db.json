@@ -2,78 +2,47 @@
   "proprietarios": [
     {
       "id": 1,
-      "cartao": "001",
-      "nome": "Carlos Henrique Pereira Machado Júnior",
-      "email": "machadopnn@gmail.com",
+      "cartao": "022",
+      "nome": "Carlos Henrique Pereira M Júnior",
+      "email": "webmaster@marinha.mil.br",
       "nip": "16115597",
-      "cnh": "16116161616",
+      "cnh": "12121212121",
       "status": true,
       "idPosto": 1,
-      "idSetor": 2
+      "idSetor": 1
     },
     {
       "id": 2,
-      "cartao": "001",
-      "nome": "Carlos Henrique Pereira Machado Júnior",
-      "email": "machadopnn@gmail.com",
+      "cartao": "022",
+      "nome": "Carlos Henrique Pereira M Júnior",
+      "email": "webmaster@marinha.mil.br",
       "nip": "16115597",
-      "cnh": "16116161616",
+      "cnh": "12121212121",
       "status": true,
       "idPosto": 1,
-      "idSetor": 2
-    },
-    {
-      "id": 3,
-      "cartao": "099",
-      "nome": "Karolina Caria dos santos",
-      "email": "karol@gmail.com",
-      "nip": "00000000",
-      "cnh": "29332392939",
-      "status": true,
-      "idPosto": 6,
-      "idSetor": 2
+      "idSetor": 1
     }
   ],
   "veiculos": [
     {
       "idProprietario": 1,
       "id": 1,
-      "modelo": "Doblo",
-      "ano": "2012",
-      "placa": "CXZ-4402",
-      "chassi": "123456789ABCDEFGH",
-      "idMontadora": 4,
-      "idCor": 2
+      "modelo": "carro 1",
+      "ano": "2018",
+      "placa": "bbb-2424",
+      "chassi": "bora",
+      "idMontadora": 1,
+      "idCor": 5
     },
     {
       "idProprietario": 2,
       "id": 2,
-      "modelo": "Doblo",
-      "ano": "2012",
-      "placa": "CXZ-4402",
-      "chassi": "123456789ABCDEFGH",
-      "idMontadora": 4,
-      "idCor": 2
-    },
-    {
-      "idProprietario": 3,
-      "id": 3,
-      "modelo": "siena",
-      "ano": "2020",
-      "placa": "KSK-2030",
-      "chassi": "AKDDS20293DASK",
-      "idMontadora": 4,
-      "idCor": 4
-    },
-    {
-      "idProprietario": 3,
-      "id": 4,
-      "modelo": "hb20",
-      "ano": "2020",
-      "placa": "ASD-2020",
-      "chassi": "ASDKDSAOK2023",
-      "idMontadora": 2,
-      "idCor": 4
+      "modelo": "carro 1",
+      "ano": "2018",
+      "placa": "bbb-2424",
+      "chassi": "bora",
+      "idMontadora": 1,
+      "idCor": 5
     }
   ],
   "montadora": [

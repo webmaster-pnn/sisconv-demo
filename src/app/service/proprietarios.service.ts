@@ -1,3 +1,4 @@
+import { delay } from 'rxjs/operators';
 // angular
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -54,7 +55,10 @@ export class ProprietariosService {
 
 
   listarProprietario(): Observable<any> {
+    console.log('servico')
     return this.http.get(this.API, httpOptions).pipe(
+      delay(2000),
+      take(1),
       map(this.extractData));
   }
 

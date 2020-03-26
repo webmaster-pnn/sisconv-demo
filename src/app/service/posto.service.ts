@@ -1,3 +1,4 @@
+import { take } from 'rxjs/operators';
 // Angular
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -22,10 +23,10 @@ export class PostoService {
 
 
   listarPosto(){
-    return this.http.get<Posto[]>(this.API);
+    return this.http.get<Posto[]>(this.API).pipe(take(1));
   }
   listarPostoId(id){
-    return this.http.get(`${this.API}/${id}`);
+    return this.http.get(`${this.API}/${id}`).pipe(take(1));
   }
 
 }

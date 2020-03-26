@@ -43,8 +43,8 @@ ocultar(){
           this.spinner.show();
           setTimeout(()=> {
             this.spinner.hide();
-          }, 2000);
-          setTimeout(()=> this.exibir = true, 2000);
+          }, 4000);
+          setTimeout(()=> this.exibir = true, 5000);
 }
     
 }

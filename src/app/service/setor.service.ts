@@ -1,3 +1,4 @@
+import { take } from 'rxjs/operators';
 
 // Angular
 import { Injectable } from '@angular/core';
@@ -19,10 +20,10 @@ export class SetorService {
 
 
   listarSetor(){
-    return this.http.get<Setor[]>(this.API);
+    return this.http.get<Setor[]>(this.API).pipe(take(1));
   }
 
   listarSetorId(id){
-    return this.http.get(`${this.API}/${id}`);
+    return this.http.get(`${this.API}/${id}`).pipe(take(1));
   }
 }

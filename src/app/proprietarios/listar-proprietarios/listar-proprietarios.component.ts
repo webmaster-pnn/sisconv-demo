@@ -34,7 +34,10 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
  
   // instancia de proprietario
   proprietario: Proprietarios[];
- 
+
+  setor$: Observable<any>;
+  posto$: Observable<any>;
+  proprietario$: Observable<any>;
   // variaveis
   tabela_vazia: boolean = false;
   bsModalRef: BsModalRef;
@@ -91,6 +94,7 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
   }
 
   ngOnInit() {
+     
 
     this.dataSource = new MatTableDataSource();
     // const data = this.route.snapshot.data['proprietarios'];
@@ -108,25 +112,19 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
   }
 
   getProprietarios(){
-    const proprietario$ = this.proprietarioService.listarProprietario();
-    proprietario$
-    .pipe(delay(2000))
+    console.log('dentro')
+    this.proprietario$ = this.proprietarioService.listarProprietario()
+    this.proprietario$
     .subscribe((p: Proprietarios []) => {
 
-      p.forEach(data => {
+      p.forEach(proprietario => {
+        this.posto$ = this.postoService.listarPostoId(proprietario.idPosto);
+        
+        this.posto$.subscribe( (posto: Posto) => proprietario.descPosto = posto.descricao)
       
-        const posto$ = this.postoService.listarPostoId(data.idPosto);
-        posto$.subscribe( (posto: Posto) => {
-          data.descPosto = posto.descricao;
-        })
-      })
-
-      p.forEach(data => {
       
-        const setor$ = this.setorService.listarSetorId(data.idSetor);
-        setor$.subscribe( (setor: Setor) => {
-          data.descSetor = setor.descricao;
-        })
+        this.setor$ = this.setorService.listarSetorId(proprietario.idSetor);
+        this.setor$.subscribe( (setor: Setor) => proprietario.descSetor = setor.descricao)
       })
 
       this.dataSource.data = p
@@ -146,17 +144,17 @@ export class ListarProprietariosComponent extends MatPaginatorIntl implements On
   teste(id){
     const remover$ = new Observable(dados =>{
       dados.next(this.removerVeiculos(id))
-
+      
       setTimeout(()=> {
 
-        dados.next(this.proprietarioService.removerProprietario(id).subscribe())
+        dados.next(this.proprietarioService.removerProprietario(id).pipe(delay(2000)).subscribe())
       }, 2000)
-      
+      dados.next(this.getProprietarios())
       dados.complete()
     });
 
     remover$.subscribe(success => {
-      this.getProprietarios()
+      
       this.modal('Proprietario removido com sucesso!', 'success')
        
       

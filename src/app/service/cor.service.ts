@@ -1,3 +1,4 @@
+import { take } from 'rxjs/operators';
 
 // Angular
 import { Injectable } from '@angular/core';
@@ -18,6 +19,6 @@ export class CorService {
 
 
   listarCor(){
-    return this.http.get<Cor[]>(this.API);
+    return this.http.get<Cor[]>(this.API).pipe(take(1));
   }
 }

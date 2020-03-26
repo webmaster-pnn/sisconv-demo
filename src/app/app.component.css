@@ -104,5 +104,34 @@ footer{
 }
 .loading-img{
     position: relative;
+    /* display: none; */
     top: -190px;
+    animation-name: spinner;
+    animation-duration: 5s;
+    /* animation-delay: 1s; */
+
+}
+.mb{
+    display: block;
+    position: relative;
+    top: -170px;
+    left: -10px;
+    animation-name: mb;
+    animation-duration: 8s;
+}
+.mbFigure  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@keyframes spinner {
+    0%{ }
+    80%{ width: 0; }
+    100%{ width: 0; }
+      
+}
+@keyframes mb{
+    0% { width: 0;}
+    20% { width: 0%;}
+    100% { width: 100%;}
 }
