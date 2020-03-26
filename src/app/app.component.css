@@ -102,3 +102,7 @@ footer{
     padding-top: 50px;
     padding-bottom: 50px;
 }
+.loading-img{
+    position: relative;
+    top: -190px;
+}
