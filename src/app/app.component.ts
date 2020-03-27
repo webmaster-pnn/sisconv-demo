@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'SisConV';
   autenticacao: boolean = false;
   exibir: boolean = true;
+  tipo = 'none';
 
   logout(){
     this.autenticacao = false;
@@ -39,11 +40,12 @@ export class AppComponent {
   }
 ocultar(){
          this.exibir = false
-          this.spinner.show();
+          this.spinner.show( );
+          
           setTimeout(()=> {
             this.spinner.hide();
           }, 4000);
-          setTimeout(()=> this.exibir = true, 5000);
+          setTimeout(()=> this.exibir = true, 4500);
 }
     
 }

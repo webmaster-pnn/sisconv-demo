@@ -21,6 +21,17 @@
       "status": true,
       "idPosto": 1,
       "idSetor": 1
+    },
+    {
+      "id": 3,
+      "cartao": "022",
+      "nome": "Ruan aprigio M Martins",
+      "email": "webmaster@marinha.mil.br",
+      "nip": "16115597",
+      "cnh": "16116161616",
+      "status": true,
+      "idPosto": 2,
+      "idSetor": 2
     }
   ],
   "veiculos": [
@@ -53,6 +64,16 @@
       "chassi": "carr",
       "idMontadora": 1,
       "idCor": 2
+    },
+    {
+      "idProprietario": 3,
+      "id": 4,
+      "modelo": "passat 2",
+      "ano": "2018",
+      "placa": "cxz-4401",
+      "chassi": "6555151115515151",
+      "idMontadora": 1,
+      "idCor": 5
     }
   ],
   "montadora": [
