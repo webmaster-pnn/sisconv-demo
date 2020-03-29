@@ -56,3 +56,24 @@ table{
 #editar_conteudo a{
     color: #333333;
 }
+#span-adicionar{
+    position: relative;
+    opacity: 0;
+    font-size: 0px;
+    padding: 12px 0px 15px 27px;
+    border-radius: 50px;
+    bottom: 12px;
+    background-color: #212f6f;
+    right: 28px;
+    color: white;
+    z-index: 1;
+    transition-duration: 0.5s;
+    
+}
+#span-adicionar:hover{
+   
+    opacity: 0.8;
+    font-size: 11px;
+    padding: 7px 8px 9px 33px;
+    bottom: 7px;
+}

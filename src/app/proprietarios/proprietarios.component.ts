@@ -1,5 +1,6 @@
+import { ProprietariosService } from 'src/app/service/proprietarios.service';
 // angular
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -7,7 +8,17 @@ import { Component } from '@angular/core';
   templateUrl: './proprietarios.component.html',
   styleUrls: ['./proprietarios.component.css']
 })
-export class ProprietariosComponent {
-  
+export class ProprietariosComponent implements OnInit {
+ 
+  botao_adicionar = true;
 
+  constructor(
+    private proprietarioService: ProprietariosService
+  ){}
+  
+  ngOnInit() {
+    this.proprietarioService.ocultarBotoes.subscribe( botao_status => this.botao_adicionar = botao_status);
+  }
+  
+ 
 }

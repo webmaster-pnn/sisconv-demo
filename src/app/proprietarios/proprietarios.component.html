@@ -2,7 +2,15 @@
 
 <!-- container principal -->
 <div >
-    <h3 >Proprietários  <a routerLink="/proprietarios/adicionar"  class="adicionar"><i class="fas fa-plus-circle"></i></a></h3>
+    <h3 >Proprietários  
+      <a routerLink="/proprietarios/adicionar"  class="adicionar" *ngIf="botao_adicionar">
+        <i class="fas fa-plus-circle">
+        <span id="span-adicionar">Adicionar proprietarios</span>
+
+        </i>
+      </a>
+      
+    </h3>
       <!-- breadcrumb -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">

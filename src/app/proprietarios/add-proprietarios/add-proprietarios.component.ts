@@ -78,7 +78,7 @@ export class AddProprietariosComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.proprietariosService.ocultarBotoes.emit(false);
     this.veiculoForm = new FormArray([]);
 
     this.getMontadora();

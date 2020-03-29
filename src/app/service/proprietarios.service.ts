@@ -1,6 +1,6 @@
 import { delay } from 'rxjs/operators';
 // angular
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // rxjs
@@ -30,7 +30,7 @@ export class ProprietariosService {
   // variaveis
 
   private readonly API = `${environment.API}proprietarios`;
-
+  ocultarBotoes = new EventEmitter<boolean>();
 
 
 
