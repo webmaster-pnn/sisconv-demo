@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 // core
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 // roteamento
 import { Router, ActivatedRoute } from '@angular/router';
 // forms
@@ -31,7 +31,8 @@ import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.comp
   styleUrls: ['./add-proprietarios.component.css']
 })
 
-export class AddProprietariosComponent implements OnInit {
+export class AddProprietariosComponent implements OnInit, OnDestroy{
+ 
 
   // variaveis
   formulario: FormGroup;
@@ -76,7 +77,9 @@ export class AddProprietariosComponent implements OnInit {
  
 
   }
-
+  ngOnDestroy(){
+    this.proprietariosService.ocultarBotoes.emit(true);
+  }
   ngOnInit() {
     this.proprietariosService.ocultarBotoes.emit(false);
     this.veiculoForm = new FormArray([]);

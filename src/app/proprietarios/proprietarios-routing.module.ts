@@ -12,7 +12,7 @@ const routes: Routes = [
     component: ProprietariosComponent,
     children: [
       {
-        path: '', component: ListarProprietariosComponent,
+        path: 'pesquisar', component: ListarProprietariosComponent,
         resolve: {
           proprietarios: ProprietariosResolverGuard
         }
@@ -28,8 +28,6 @@ const routes: Routes = [
         resolve: {
           proprietarios: ProprietariosResolverGuard
         }
-      },
-      { path: 'remover/:id', component: ListarProprietariosComponent
       }
     ]
   },
